@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-tittle" style="font-size: 20px;">
-                        Data Produk
+                        Data Kategori
                     </div>
                     <div class="card-tools">
                         <a href="{{ url('Kategori/create') }}" class="btn btn-dark btn-sm">

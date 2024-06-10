@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('Login', function () {
+    return view('components.login');
+});
+
 Route::get('Dashboard', [HomeController::class, 'showDashboard']);
 
 // Route::get('Produk', [ProdukController::class, 'index']);
@@ -27,6 +31,7 @@ Route::get('Dashboard', [HomeController::class, 'showDashboard']);
 // Route::post('Produk', [ProdukController::class, 'store']);
 
 Route::resource('Produk', ProdukController::class);
+
 
 Route::get('Kategori', [KategoriController::class, 'index']);
 Route::get('Kategori/create', [KategoriController::class, 'create']);

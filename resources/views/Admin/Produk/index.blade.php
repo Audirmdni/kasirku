@@ -14,13 +14,13 @@
         </div>
     </section>
     <section class="content">
-        <div class="card-tittle" style="font-size: 20px;">
-            Data Produk
-        </div>
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-tools-left">
+                    <div class="card-tittle" style="font-size: 20px;">
+                        Data Produk
+                    </div>
+                    <div class="card-tools">
                         <a href="{{ url('Produk/create') }}" class="btn btn-dark btn-sm">
                             <i class="fa fa-plus"></i> Tambah Produk
                         </a>
@@ -53,11 +53,13 @@
                                 <td>{{ $produk->stok}}</td>
                                 <td>{{ $produk->diskon}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i> </a>
-                                    <a href="#" class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i> </a>
-                                    </a>
+                                    <div class="btn-group">
+                                        <a href="{{ url('Produk', $produk->id) }}/edit" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i> </a>
+                                        <a href="{{ url('produk', $produk->id) }}" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i> </a>
+                                        </a>
+                                    </div>
                                 </td>
                                 <td></td>
                             </tr>

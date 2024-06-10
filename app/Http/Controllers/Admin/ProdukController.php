@@ -34,4 +34,9 @@ class ProdukController extends Controller
 
         return redirect('Produk')->with('success', 'Data Berhasil Ditambahkan');
     }
+    function edit()
+    {
+        $data['list_produk'] = Produk::all();
+        return view('Admin.Produk.edit', $data);
+    }
 }

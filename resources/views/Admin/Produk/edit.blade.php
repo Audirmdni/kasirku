@@ -4,7 +4,7 @@
             <div class="col-md-10 mt-4">
                 <div class=" card">
                     <div class="card-header text-center">
-                        <strong style="font-size: 16px;">Tambah Data Produ</strong>
+                        <strong style="font-size: 16px;">Edit Data Produ</strong>
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{ url('Produk/edit') }}">
