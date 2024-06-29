@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ADMIN | OKEPAY</title>
+  <title>ADMIN | KASIRKU</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -23,7 +24,7 @@
   <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
+  <!-- Summernote -->
   <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -31,7 +32,6 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-
     <!-- Navbar -->
     <x-layout.admin.header />
     <!-- /.navbar -->
@@ -47,13 +47,7 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0 text-dark">Dashboard</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
-              </ol>
-            </div><!-- /.col -->
+            </div>
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>
@@ -69,7 +63,6 @@
               <div class="small-box bg-info">
                 <div class="inner">
                   <h3>150</h3>
-
                   <p>New Orders</p>
                 </div>
                 <div class="icon">
@@ -84,7 +77,6 @@
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3>53<sup style="font-size: 20px">%</sup></h3>
-
                   <p>Bounce Rate</p>
                 </div>
                 <div class="icon">
@@ -99,7 +91,6 @@
               <div class="small-box bg-warning">
                 <div class="inner">
                   <h3>44</h3>
-
                   <p>User Registrations</p>
                 </div>
                 <div class="icon">
@@ -114,7 +105,6 @@
               <div class="small-box bg-danger">
                 <div class="inner">
                   <h3>65</h3>
-
                   <p>Unique Visitors</p>
                 </div>
                 <div class="icon">
@@ -126,14 +116,13 @@
             <!-- ./col -->
           </div>
           <!-- /.row -->
-
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
-    <!--Main footer -->
+    <!-- Main footer -->
     <x-layout.admin.footer />
 
     <!-- Control Sidebar -->
