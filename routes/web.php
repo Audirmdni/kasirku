@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Kasir\KasirHomeController;
 use App\Http\Controllers\Kasir\KasirTransaksiController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
