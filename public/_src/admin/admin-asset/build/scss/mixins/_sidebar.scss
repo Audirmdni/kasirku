@@ -6,7 +6,7 @@
 @mixin sidebar-color($color) {
   .nav-sidebar > .nav-item {
     & > .nav-link.active {
-      background-color: $color;
+      background-color: #000000;
       color: color-yiq($color);
     }
   }
