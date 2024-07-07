@@ -6,13 +6,8 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    function showDashboard()
+    function showAdmin()
     {
-        return view('Admin.Dashboard.index');
-    }
-
-    public function index()
-    {
-        return view('admin.dashboard');
+        return view('welcome');
     }
 }
