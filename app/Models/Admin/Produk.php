@@ -2,25 +2,18 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Model;
+use App\Models\Admin\Kategori;
 
 class Produk extends Model
 {
     protected $table = 'produk';
-    protected $primaryKey = 'id_produk';
 
     protected $fillable = [
-        'kode_produk',
-        'nama_produk',
-        'id_kategori',
-        'harga_beli',
-        'harga_jual',
-        'stok',
-        'diskon',
+        'id_kategori', 'nama_produk', 'stok', 'harga_dasar', 'harga_jual', 'diskon',
     ];
-
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
+        return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 }

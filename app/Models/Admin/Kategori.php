@@ -2,19 +2,14 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Admin\Produk as AdminProduk;
 use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
     protected $table = 'kategori';
-
-    protected $primaryKey = 'id_kategori';
-    protected $fillable = [
-        'nama_kategori',
-    ];
-
-    public function produk()
+    public function produks()
     {
-        return $this->hasMany(Produk::class, 'id_kategori');
+        return $this->hasMany(AdminProduk::class, 'kategori_id');
     }
 }

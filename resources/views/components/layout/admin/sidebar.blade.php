@@ -2,7 +2,7 @@
   <!-- Sidebar Style -->
   <style>
     .brand-link {
-      background-color: #008000;
+      background-color: #ff6600;
     }
 
     .main-sidebar {
@@ -23,24 +23,24 @@
       color: #000000;
       font-family: 'Times New Roman', Times, serif;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 16px;
     }
 
     .nav-link p {
       color: #000000;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .nav-icon {
-      color: #008000;
+      color: #ff6600;
     }
   </style>
 
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
     <img src="{{url('public')}}/admin-asset/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text">KASIRKU</span>
+    <span class="brand-text">OKEPAY</span>
   </a>
 
   <!-- Sidebar -->
@@ -51,7 +51,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="Admin/Beranda" class="nav-link">
+            <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -61,7 +61,7 @@
           </li>
           <li class="nav-header">DATABASE</li>
           <li class="nav-item">
-            <a href="Admin/Produk" class="nav-link">
+            <a href="pages/calendar.html" class="nav-link">
               <i class="nav-icon fas fa-box"></i>
               <p>
                 Produk
@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="Admin/Kategori" class="nav-link">
+            <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 Kategori

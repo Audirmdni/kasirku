@@ -2,10 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\BerandaController;
-use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\ProdukController;
-
+use App\Http\Controllers\Admin\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +16,23 @@ use App\Http\Controllers\Admin\ProdukController;
 |
 */
 
-Route::get('Admin', [HomeController::class, 'showAdmin']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('Login', function () {
     return view('components.login');
 });
-Route::resource('/Admin/Beranda', BerandaController::class);
-Route::resource('Admin/Kategori', KategoriController::class);
 
-Route::resource('Admin/Produk', ProdukController::class);
+Route::get('Dashboard', [HomeController::class, 'showDashboard']);
+
+// Route::get('Produk', [ProdukController::class, 'index']);
+// Route::get('Produk/create', [ProdukController::class, 'create']);
+// Route::post('Produk', [ProdukController::class, 'store']);
+
+Route::resource('Produk', ProdukController::class);
+
+
+Route::get('Kategori', [KategoriController::class, 'index']);
+Route::get('Kategori/create', [KategoriController::class, 'create']);
+Route::post('Kategori', [KategoriController::class, 'store']);
