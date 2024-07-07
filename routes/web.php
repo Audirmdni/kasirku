@@ -31,7 +31,7 @@ Route::get('login', function () {
 Route::get('register', function () {
     return view('auth.register');
 });
-Route::resource('/Admin/Beranda', BerandaController::class);
+// Route::resource('/Admin/Beranda', BerandaController::class);
 Route::resource('Admin/Kategori', KategoriController::class);
 
 
