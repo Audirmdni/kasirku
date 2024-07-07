@@ -16,6 +16,6 @@ class KasirTransaksiController extends Controller
         return view('kasir.transaksi.create');
     }
     function detail(){
-        return view('kasir.transaksi.detail');
+        return view('kasir.transaksi.detail' );
     }
 }
