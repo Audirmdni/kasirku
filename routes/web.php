@@ -2,10 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\KategoriController;
+
 use App\Http\Controllers\Kasir\KasirHomeController;
 use App\Http\Controllers\Kasir\KasirTransaksiController;
+
+use App\Http\Controllers\Admin\ProdukController;
+
 
 
 /*
@@ -19,9 +23,7 @@ use App\Http\Controllers\Kasir\KasirTransaksiController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('Admin', [HomeController::class, 'showAdmin']);
 
 Route::get('login', function () {
     return view('auth.login');
@@ -29,6 +31,9 @@ Route::get('login', function () {
 Route::get('register', function () {
     return view('auth.register');
 });
+// Route::resource('/Admin/Beranda', BerandaController::class);
+Route::resource('Admin/Kategori', KategoriController::class);
+
 
 Route::get('Dashboard', [HomeController::class, 'showDashboard']);
 
@@ -50,3 +55,6 @@ Route::prefix('kasir')->group(function(){
         Route::get('/create', [KasirTransaksiController::class, 'create']);
         Route::get('/detail', [KasirTransaksiController::class, 'detail']);
 });
+
+Route::resource('Admin/Produk', ProdukController::class);
+
