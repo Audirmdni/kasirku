@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Kategori;
 use Illuminate\Http\Request;
 use App\Models\Admin\Produk;
-use App\Models\Admin\Kategori;
+use App\Models\MOdels\Produk as MOdelsProduk;
 
 class ProdukController extends Controller
 {
-    public function index()
+    function index()
     {
-        $data['produk'] = Produk::with('kategori')->get();
-        $data['kategori'] = Kategori::all();
+        $data['list_produk'] = Produk::all();
         return view('Admin.Produk.index', $data);
     }
+
 
     // Method untuk pencarian produk
     public function search(Request $request)
@@ -42,21 +43,28 @@ class ProdukController extends Controller
             'stok' => 'required|integer|min:0',
             'diskon' => 'required|numeric|min:0|max:100',
         ]);
+    }
 
+    public function create()
+    {
+        $kategoris = Kategori::all();
+        return view('Admin.Produk.create', compact('kategoris'));
+    }
+    public function store(Request $request)
+    {
         $produk = new Produk();
         $produk->kode_produk = $request->kode_produk;
         $produk->nama_produk = $request->nama_produk;
-        $produk->id_kategori = $request->id_kategori;
-        $produk->harga_beli = $request->harga_beli;
+        $produk->id_kategori = $request->kategori;
+        $produk->harga_dasar = $request->harga_dasar;
         $produk->harga_jual = $request->harga_jual;
         $produk->stok = $request->stok;
         $produk->diskon = $request->diskon;
         $produk->save();
 
-        return redirect('Admin/Produk')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('Produk')->with('success', 'Data Berhasil Ditambahkan');
     }
-
-    public function edit($id)
+    public function edit()
     {
         $data['produk'] = Produk::find($id);
         if (!$data['produk']) {

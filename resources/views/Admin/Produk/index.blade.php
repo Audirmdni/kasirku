@@ -1,12 +1,21 @@
 <x-admin>
-    <!-- Content Header (Page header) -->
     <section class="content-header">
-        <!-- Header content -->
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                        <li class="breadcrumb-item active">Produk</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </section>
-
-    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+<<<<<<< HEAD
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -125,11 +134,65 @@
                                 </div>
                             </div>
                         </div>
+=======
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-tittle" style="font-size: 20px;">
+                        Data Produk
+>>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
                     </div>
+                    <div class="card-tools">
+                        <a href="{{ url('Produk/create') }}" class="btn btn-dark btn-sm">
+                            <i class="fa fa-plus"></i> Tambah Produk
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Kode Produk</th>
+                                <th>Nama Produk</th>
+                                <th>Kategori</th>
+                                <th>Harga Dasar</th>
+                                <th>Harga Jual</th>
+                                <th>Stok</th>
+                                <th>Diskon</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($list_produk as $produk)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td></td>
+                                <td>{{ $produk->nama_produk}}</td>
+                                <td>{{ $produk->id_kategori}}</td>
+                                <td>{{ $produk->harga_dasar}}</td>
+                                <td>{{ $produk->harga_jual}}</td>
+                                <td>{{ $produk->stok}}</td>
+                                <td>{{ $produk->diskon}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ url('Produk', $produk->id) }}/edit" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i> </a>
+                                        <a href="{{ url('produk', $produk->id) }}" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i> </a>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+
+                    </table>
                 </div>
             </div>
         </div>
     </section>
+<<<<<<< HEAD
 
     <!-- Tambah Produk Modal -->
     <div class="modal fade" id="tambahprodukModal" tabindex="-1" role="dialog" aria-labelledby="tambahprodukModalLabel" aria-hidden="true">
@@ -336,4 +399,6 @@
         }
     </script>
     @endpush
+=======
+>>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
 </x-admin>

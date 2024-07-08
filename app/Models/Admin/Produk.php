@@ -2,16 +2,18 @@
 
 namespace App\Models\Admin;
 
+
 use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Milon\Barcode\DNS1D;
+use App\Models\Model;
+use App\Models\Admin\Kategori;
 
 class Produk extends Model
 {
     protected $table = 'produk';
-    protected $primaryKey = 'id_produk';
 
     protected $fillable = [
+
         'kode_produk',
         'nama_produk',
         'id_kategori',
@@ -35,11 +37,12 @@ class Produk extends Model
 
     protected $casts = [
         'created_at' => 'datetime:d-m-Y H:i:s',
-    ];
+        'id_kategori', 'nama_produk', 'stok', 'harga_dasar', 'harga_jual', 'diskon',
 
+    ];
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
+        return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 
     public function getCreatedAtAttribute($value)

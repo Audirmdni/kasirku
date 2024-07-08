@@ -2,7 +2,7 @@
   <!-- Sidebar Style -->
   <style>
     .brand-link {
-      background-color: #008000;
+      background-color: #ff6600;
     }
 
     .main-sidebar {
@@ -23,24 +23,24 @@
       color: #000000;
       font-family: 'Times New Roman', Times, serif;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 16px;
     }
 
     .nav-link p {
       color: #000000;
       font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .nav-icon {
-      color: #008000;
+      color: #ff6600;
     }
   </style>
 
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
     <img src="{{url('public')}}/admin-asset/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text">KASIRKU</span>
+    <span class="brand-text">OKEPAY</span>
   </a>
 
   <!-- Sidebar -->
@@ -51,7 +51,11 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
+<<<<<<< HEAD
             <a href="{{(url('Admin/Beranda'))}}" class="nav-link {{request()->is('Admin/Beranda*') ? '' : ''}}">
+=======
+            <a href="pages/widgets.html" class="nav-link">
+>>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Beranda
@@ -61,7 +65,11 @@
           </li>
           <li class="nav-header">DATABASE</li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a href="{{(url('Admin/Produk'))}}" class="nav-link {{request()->is('Admin/Produk*') ? '' : ''}}">
+=======
+            <a href="pages/calendar.html" class="nav-link">
+>>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
               <i class="nav-icon fas fa-box"></i>
               <p>
                 Produk
@@ -70,7 +78,11 @@
             </a>
           </li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a href="{{(url('Admin/Kategori'))}}" class="nav-link {{request()->is('Admin/Kategori*') ? '' : ''}}">
+=======
+            <a href="pages/gallery.html" class="nav-link">
+>>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
               <i class="nav-icon fas fa-list"></i>
               <p>
                 Kategori
