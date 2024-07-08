@@ -13,33 +13,55 @@
                         <div class="card-header">
                             <h3 class="card-title" style="font-weight: bold; margin-bottom: 0; font-size: 18px;">DAFTAR KATEGORI</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#tambahkategoriModal">
+                                <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#tambahkategoriModal">
                                     <i class="fa fa-plus"></i> <span class="font-weight-bold">Tambah</span>
                                 </button>
                             </div>
                         </div>
+                        <!-- Tampilkan Data dan Pencarian-->
                         <div class="card-body">
-                            <!-- Pencarian -->
-                            <div class="row mb-3 justify-content-end">
+                            <div class="row mb-3 justify-content-between">
+                                <div class="col-md-4">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-auto">
+                                            <span class="mr-2">Tampilkan:</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <select class="form-control form-control-sm">
+                                                <option>10</option>
+                                                <option>25</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-auto">
+                                            Data
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" style="font-size: 14px; padding: 5px;" placeholder="Pencarian...">
+                                    <form action="{{ url('Admin/Kategori/search') }}" method="GET">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm" style="font-size: 14px; padding: 15px; width: 100%;" placeholder="Cari..." name="keyword">
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <!-- Tabel Data Kategori -->
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover text-left">
-                                    <thead style="background-color: #008000; color: white; font-size: 14px;">
+                                    <thead style="background-color: #d3d3d3; color: black; font-size: 14px;">
                                         <tr>
-                                            <th style="width: 3%;">NO.</th>
+                                            <th class="text-center" style="width: 3%;">NO.</th>
                                             <th style="width: 40%;">KATEGORI</th>
-                                            <th style="width: 13%;">AKSI</th>
+                                            <th style="width: 3%;">AKSI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!-- Isi data kategori -->
                                         @foreach($kategori as $index => $kat)
                                         <tr style="font-size: 14px;">
-                                            <td>{{ $index + 1 }}</td>
+                                            <td class="text-center">{{ $index + 1 }}</td>
                                             <td>{{ $kat->nama_kategori }}</td>
                                             <td>
                                                 <div class="btn-group">
@@ -101,8 +123,8 @@
                             <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Nama Kategori" required>
                         </div>
                         <div class="text-right">
-                            <button type="button" class="btn btn-sm btn-danger btn-xs" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-sm btn-success btn-xs">Simpan</button>
+                            <button type="button" class="btn btn-md btn-danger btn-xs" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-md btn-success btn-xs">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -116,7 +138,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editkategoriModalLabel{{$kat->id_kategori}}">Edit Kategori</h5>
+                    <h5 class="modal-title w-100 text-center" id="editkategoriModalLabel{{$kat->id_kategori}}">Edit Kategori</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -130,8 +152,8 @@
                             <input type="text" class="form-control" id="edit_nama_kategori{{$kat->id_kategori}}" name="nama_kategori" value="{{ $kat->nama_kategori }}">
                         </div>
                         <div class="text-right">
-                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-sm btn-success">Simpan</button>
+                            <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-md btn-success">Simpan</button>
                         </div>
                     </form>
                 </div>
