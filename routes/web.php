@@ -5,6 +5,10 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\PengeluaranController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\RegisterController;
 
 
 /*
@@ -18,12 +22,17 @@ use App\Http\Controllers\Admin\ProdukController;
 |
 */
 
+//ADMIN//
 Route::get('Admin', [HomeController::class, 'showAdmin']);
+Route::resource('Login', LoginController::class);
+Route::resource('Register', RegisterController::class);
 
-Route::get('Login', function () {
-    return view('components.login');
+Route::prefix('Admin')->group(function () {
+    Route::resource('Beranda', BerandaController::class);
+    Route::resource('Kategori', KategoriController::class);
+    Route::resource('Produk', ProdukController::class);
+    Route::get('Produk/{id}/qrcode', [ProdukController::class, 'generateQRCode'])->name('admin.produk.qrcode');
+    Route::get('Produk/search', [ProdukController::class, 'search'])->name('admin.produk.search');
+    Route::resource('Supplier', SupplierController::class);
+    Route::resource('Pengeluaran', PengeluaranController::class);
 });
-Route::resource('/Admin/Beranda', BerandaController::class);
-Route::resource('Admin/Kategori', KategoriController::class);
-
-Route::resource('Admin/Produk', ProdukController::class);
