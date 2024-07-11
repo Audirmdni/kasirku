@@ -3,11 +3,15 @@
 namespace App\Models\Admin;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 use Illuminate\Support\Carbon;
 use Milon\Barcode\DNS1D;
 use App\Models\Model;
 use App\Models\Admin\Kategori;
+=======
+use Illuminate\Database\Eloquent\Model;
+>>>>>>> parent of a7ad9c9 (update admin baru)
 =======
 use Illuminate\Database\Eloquent\Model;
 >>>>>>> parent of a7ad9c9 (update admin baru)
@@ -25,6 +29,7 @@ class Produk extends Model
         'harga_jual',
         'stok',
         'diskon',
+<<<<<<< HEAD
 <<<<<<< HEAD
         'created_at',
         'updated_at',
@@ -44,12 +49,18 @@ class Produk extends Model
         'created_at' => 'datetime:d-m-Y H:i:s',
         'id_kategori', 'nama_produk', 'stok', 'harga_dasar', 'harga_jual', 'diskon',
 =======
+=======
+>>>>>>> parent of a7ad9c9 (update admin baru)
     ];
 >>>>>>> parent of a7ad9c9 (update admin baru)
 
     ];
     public function kategori()
     {
+<<<<<<< HEAD
         return $this->belongsTo(Kategori::class, 'id_kategori');
+=======
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
+>>>>>>> parent of a7ad9c9 (update admin baru)
     }
 }

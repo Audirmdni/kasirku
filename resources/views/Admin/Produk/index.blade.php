@@ -273,6 +273,7 @@
     </div>
     @endforeach
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     <!-- Lihat Produk Modal -->
     @foreach($produk as $prod)
@@ -344,6 +345,8 @@
     @endpush
 =======
 >>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
+=======
+>>>>>>> parent of a7ad9c9 (update admin baru)
 =======
 >>>>>>> parent of a7ad9c9 (update admin baru)
 </x-admin>

@@ -16,10 +16,14 @@ class ProdukController extends Controller
         return view('Admin.Produk.index', $data);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     // Method untuk pencarian produk
     public function search(Request $request)
+=======
+    public function create()
+>>>>>>> parent of a7ad9c9 (update admin baru)
 =======
     public function create()
 >>>>>>> parent of a7ad9c9 (update admin baru)

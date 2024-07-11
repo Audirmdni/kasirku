@@ -53,10 +53,14 @@
           <li class="nav-item">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="{{(url('Admin/Beranda'))}}" class="nav-link {{request()->is('Admin/Beranda*') ? '' : ''}}">
 =======
             <a href="pages/widgets.html" class="nav-link">
 >>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
+=======
+            <a href="Admin/Beranda" class="nav-link">
+>>>>>>> parent of a7ad9c9 (update admin baru)
 =======
             <a href="Admin/Beranda" class="nav-link">
 >>>>>>> parent of a7ad9c9 (update admin baru)
@@ -71,10 +75,14 @@
           <li class="nav-item">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="{{(url('Admin/Produk'))}}" class="nav-link {{request()->is('Admin/Produk*') ? '' : ''}}">
 =======
             <a href="pages/calendar.html" class="nav-link">
 >>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
+=======
+            <a href="Admin/Produk" class="nav-link">
+>>>>>>> parent of a7ad9c9 (update admin baru)
 =======
             <a href="Admin/Produk" class="nav-link">
 >>>>>>> parent of a7ad9c9 (update admin baru)
@@ -88,10 +96,14 @@
           <li class="nav-item">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="{{(url('Admin/Kategori'))}}" class="nav-link {{request()->is('Admin/Kategori*') ? '' : ''}}">
 =======
             <a href="pages/gallery.html" class="nav-link">
 >>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
+=======
+            <a href="Admin/Kategori" class="nav-link">
+>>>>>>> parent of a7ad9c9 (update admin baru)
 =======
             <a href="Admin/Kategori" class="nav-link">
 >>>>>>> parent of a7ad9c9 (update admin baru)
