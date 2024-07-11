@@ -13,7 +13,6 @@
                         <div class="card-header">
                             <h3 class="card-title" style="font-weight: bold; margin-bottom: 0; font-size: 18px;">DAFTAR PRODUK</h3>
                             <div class="card-tools">
-<<<<<<< HEAD
                                 <button type="button" class="btn btn-md btn-success" onclick="printBarcodes()">
                                     <i class="fa fa-print"></i> <span class="font-weight-bold">Cetak Barcode</span>
                                 </button>
@@ -30,15 +29,11 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#tambahprodukModal">
-=======
-                                <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#tambahprodukModal">
->>>>>>> ce999cdf3237bceaaf246b6adacd02f46923e14d
                                     <i class="fa fa-plus"></i> <span class="font-weight-bold">Tambah</span>
                                 </button>
                             </div>
                         </div>
                         <div class="card-body">
-<<<<<<< HEAD
 
                             <div class="table-responsive">
                                 <table id="example2" class="table table-bordered table-striped">
@@ -53,60 +48,18 @@
                                             <th>HARGA JUAL</th>
                                             <th class="text-center">DISKON</th>
                                             <th>STOK</th>
-=======
-                            <!-- Pencarian -->
-                            <div class="row mb-3 justify-content-end">
-                                <div class="col-md-3">
-                                    <form action="{{ url('Admin/Produk/search') }}" method="GET">
-                                        <input type="text" class="form-control" style="font-size: 14px; padding: 5px;" placeholder="Pencarian..." name="keyword">
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- Tabel Data Produk -->
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover text-left">
-                                    <thead style="background-color: #008000; color: white; font-size: 14px;">
-                                        <tr>
-                                            <th style="width: 3%;">NO.</th>
-                                            <th style="width: 10%;">KODE PRODUK</th>
-                                            <th style="width: 20%;">NAMA PRODUK</th>
-                                            <th style="width: 15%;">KATEGORI</th>
-                                            <th style="width: 10%;">HARGA BELI</th>
-                                            <th style="width: 10%;">HARGA JUAL</th>
-                                            <th style="width: 5%;">DISKON</th>
-                                            <th style="width: 5%;">STOK</th>
-                                            <th style="width: 15%;">AKSI</th>
-                                        </tr>
->>>>>>> ce999cdf3237bceaaf246b6adacd02f46923e14d
                                     </thead>
                                     <tbody>
                                         <!-- Isi data produk -->
                                         @foreach($produk as $index => $prod)
-<<<<<<< HEAD
                                         <tr>
                                             <td class="text-center">{{ $index + 1 }}</td>
                                             <td class="text-center">
-=======
-                                        <tr style="font-size: 14px;">
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>{{ $prod->kode_produk }}</td>
-                                            <td>{{ $prod->nama_produk }}</td>
-                                            <td>{{ $prod->kategori->nama_kategori }}</td>
-                                            <td>{{ $prod->harga_beli }}</td>
-                                            <td>{{ $prod->harga_jual }}</td>
-                                            <td>{{ $prod->diskon }}%</td>
-                                            <td>{{ $prod->stok }}</td>
-                                            <td>
->>>>>>> ce999cdf3237bceaaf246b6adacd02f46923e14d
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editprodukModal{{$prod->id_produk}}">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-<<<<<<< HEAD
                                                     <form action="{{ url('admin/produk', $prod->id_produk) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');" style="display:inline;">
-=======
-                                                    <form action="{{ url('Admin/Produk', $prod->id_produk) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
->>>>>>> ce999cdf3237bceaaf246b6adacd02f46923e14d
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger">

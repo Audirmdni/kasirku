@@ -19,7 +19,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-<<<<<<< HEAD
 
                             <!-- Tabel Data Kategori -->
                             <div class="table-responsive">
@@ -29,38 +28,14 @@
                                             <th width="1Opx" style="text-align: center;">NO.</th>
                                             <th width="1Opx" style="text-align: center;">AKSI</th>
                                             <th>KATEGORI</th>
-=======
-                            <!-- Pencarian -->
-                            <div class="row mb-3 justify-content-end">
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control" style="font-size: 14px; padding: 5px;" placeholder="Pencarian...">
-                                </div>
-                            </div>
-                            <!-- Tabel Data Kategori -->
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover text-left">
-                                    <thead style="background-color: #008000; color: white; font-size: 14px;">
-                                        <tr>
-                                            <th style="width: 3%;">NO.</th>
-                                            <th style="width: 40%;">KATEGORI</th>
-                                            <th style="width: 13%;">AKSI</th>
->>>>>>> ce999cdf3237bceaaf246b6adacd02f46923e14d
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!-- Isi data kategori -->
-<<<<<<< HEAD
                                         @foreach($kategori as $kat)
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">
-=======
-                                        @foreach($kategori as $index => $kat)
-                                        <tr style="font-size: 14px;">
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>{{ $kat->nama_kategori }}</td>
-                                            <td>
->>>>>>> ce999cdf3237bceaaf246b6adacd02f46923e14d
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihatkategoriModal{{$kat->id_kategori}}">
                                                         <i class="fa fa-info-circle"></i>

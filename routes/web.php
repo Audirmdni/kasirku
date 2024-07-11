@@ -32,6 +32,6 @@ Route::prefix('admin')->group(function () {
 
 
 Route::prefix('kasir')->group(function () {
-    include __DIR__."/front/__.php";
+    include "_/front.php";
     
 });

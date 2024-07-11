@@ -73,13 +73,9 @@
 
             <a href="{{(url('admin/produk'))}}" class="nav-link {{request()->is('admin/produk*') ? '' : ''}}">
 
-            <a href="{{(url('Admin/Produk'))}}" class="nav-link {{request()->is('Admin/Produk*') ? '' : ''}}">
+          
 
-            <a href="pages/calendar.html" class="nav-link">
-
-            <a href="Admin/Produk" class="nav-link">
-
-            <a href="Admin/Produk" class="nav-link">
+          
 
               <i class="nav-icon fas fa-box"></i>
               <p>
@@ -89,14 +85,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{(url('admin/kategori'))}}" class="nav-link {{request()->is('admin/kategori*') ? '' : ''}}">
+           
 
+            <a href="{{(url('admin/kategori'))}}" class="nav-link {{request()->is('Admin/Kategori*') ? '' : ''}}">
 
-            <a href="{{(url('Admin/Kategori'))}}" class="nav-link {{request()->is('Admin/Kategori*') ? '' : ''}}">
-
-            <a href="Admin/Kategori" class="nav-link">
-
-            <a href="Admin/Kategori" class="nav-link">
+          
+          
 
               <i class="nav-icon fas fa-list"></i>
               <p>
