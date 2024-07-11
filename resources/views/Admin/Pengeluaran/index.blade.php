@@ -20,58 +20,29 @@
                         </div>
                         <div class="card-body">
                             <div class="card-body">
-                                <div class="row mb-3 justify-content-between">
-                                    <div class="col-md-4">
-                                        <div class="form-row align-items-center">
-                                            <div class="col-auto">
-                                                <span class="mr-2">Tampilkan:</span>
-                                            </div>
-                                            <div class="col-auto">
-                                                <select class="form-control form-control-sm">
-                                                    <option>10</option>
-                                                    <option>25</option>
-                                                    <option>50</option>
-                                                    <option>100</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-auto">
-                                                Data
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <form action="{{ url('Admin/Pengeluaran/search') }}" method="GET">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control form-control-sm" style="font-size: 14px; padding: 15px; width: 100%;" placeholder="Cari..." name="keyword">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+
                                 <!-- Tabel Data Pengeluaran -->
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-hover text-left">
-                                        <thead style="background-color: #d3d3d3; color: black; font-size: 14px;">
+                                    <table id="example2" class="table table-bordered table-striped">
+                                        <thead>
                                             <tr>
-                                                <th class="text-center" style="width:  3%;">NO.</th>
-                                                <th style="width: 35%;">DESKRIPSI</th>
-                                                <th style="width: 20%;">NOMINAL</th>
-                                                <th style="width: 20%;">TANGGAL PEMBAYARAN</th>
-                                                <th style="width: 7%;">AKSI</th>
+                                                <th width="10px" style="text-align: center;">NO.</th>
+                                                <th class="text-center">AKSI</th>
+                                                <th>DESKRIPSI</th>
+                                                <th>NOMINAL</th>
+                                                <th>TANGGAL PEMBAYARAN</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($pengeluarans as $index => $p)
-                                            <tr style="font-size: 14px;">
+                                            <tr>
                                                 <td class="text-center">{{ $index + 1 }}</td>
-                                                <td>{{ $p->deskripsi }}</td>
-                                                <td>Rp {{ number_format($p->nominal, 0, ',', '.') }}</td>
-                                                <td>{{ $p->created_at}}</td>
-                                                <td>
+                                                <td class="text-center">
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editPengeluaranModal{{ $p->id_pengeluaran }}">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
-                                                        <form action="{{ url('Admin/Pengeluaran', $p->id_pengeluaran) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengeluaran ini?');">
+                                                        <form action="{{ url('admin/pengeluaran', $p->id_pengeluaran) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengeluaran ini?');">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-sm btn-danger">
@@ -80,27 +51,15 @@
                                                         </form>
                                                     </div>
                                                 </td>
+                                                <td>{{ $p->deskripsi }}</td>
+                                                <td>Rp {{ number_format($p->nominal, 0, ',', '.') }}</td>
+                                                <td>{{ $p->created_at}}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
-                                <!-- Pagination -->
-                                <div class="row mt-3">
-                                    <div class="col-md-6">
-                                        <div class="dataTables_info">Menampilkan 1 sampai 10 dari {{ $pengeluarans->count() }} entri</div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="dataTables_paginate paging_simple_numbers">
-                                            <ul class="pagination justify-content-end">
-                                                <li class="paginate_button page-item previous disabled"><a href="#" class="page-link">&lt;</a></li>
-                                                <li class="paginate_button page-item active"><a href="#" class="page-link">1</a></li>
-                                                <li class="paginate_button page-item"><a href="#" class="page-link">2</a></li>
-                                                <li class="paginate_button page-item next"><a href="#" class="page-link">&gt;</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -119,7 +78,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('Admin/Pengeluaran') }}" method="post">
+                    <form action="{{ url('admin/pengeluaran') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
@@ -156,7 +115,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('Admin/Pengeluaran', $p->id_pengeluaran) }}" method="post">
+                    <form action="{{ url('admin/pengeluaran', $p->id_pengeluaran) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

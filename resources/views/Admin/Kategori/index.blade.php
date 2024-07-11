@@ -1,21 +1,12 @@
 <x-admin>
+    <!-- Content Header (Page header) -->
     <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                        <li class="breadcrumb-item active">Kategori</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
+        <!-- Header content -->
     </section>
+
+    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-<<<<<<< HEAD
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -29,55 +20,31 @@
                         </div>
                         <!-- Tampilkan Data dan Pencarian-->
                         <div class="card-body">
-                            <div class="row mb-3 justify-content-between">
-                                <div class="col-md-4">
-                                    <div class="form-row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="mr-2">Tampilkan:</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <select class="form-control form-control-sm">
-                                                <option>10</option>
-                                                <option>25</option>
-                                                <option>50</option>
-                                                <option>100</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-auto">
-                                            Data
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <form action="{{ url('Admin/Kategori/search') }}" method="GET">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control form-control-sm" style="font-size: 14px; padding: 15px; width: 100%;" placeholder="Cari..." name="keyword">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+
                             <!-- Tabel Data Kategori -->
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover text-left">
-                                    <thead style="background-color: #d3d3d3; color: black; font-size: 14px;">
+                                <table id="example2" class="table table-bordered table-striped">
+                                    <thead style="color: black; font-size: 14px;">
                                         <tr>
-                                            <th class="text-center" style="width: 3%;">NO.</th>
-                                            <th style="width: 40%;">KATEGORI</th>
-                                            <th style="width: 3%;">AKSI</th>
+                                            <th width="1Opx" style="text-align: center;">NO.</th>
+                                            <th width="1Opx" style="text-align: center;">AKSI</th>
+                                            <th>KATEGORI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!-- Isi data kategori -->
-                                        @foreach($kategori as $index => $kat)
-                                        <tr style="font-size: 14px;">
-                                            <td class="text-center">{{ $index + 1 }}</td>
-                                            <td>{{ $kat->nama_kategori }}</td>
-                                            <td>
+                                        @foreach($kategori as $kat)
+                                        <tr>
+                                            <td class="text-center">{{ $loop->iteration }}</td>
+                                            <td class="text-center">
                                                 <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihatkategoriModal{{$kat->id_kategori}}">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </button>
                                                     <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editkategoriModal{{$kat->id_kategori}}">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <form action="{{ url('Admin/Kategori', $kat->id_kategori) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
+                                                    <form action="{{ url('admin/kategori', $kat->id_kategori) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger">
@@ -86,66 +53,19 @@
                                                     </form>
                                                 </div>
                                             </td>
+                                            <td>{{ $kat->nama_kategori }}</td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- Pagination -->
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <div class="dataTables_info">Menampilkan 1 sampai 10 dari {{ $kategori->count() }} entri</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination justify-content-end">
-                                            <li class="paginate_button page-item previous disabled"><a href="#" class="page-link">&lt;</a></li>
-                                            <li class="paginate_button page-item active"><a href="#" class="page-link">1</a></li>
-                                            <li class="paginate_button page-item"><a href="#" class="page-link">2</a></li>
-                                            <li class="paginate_button page-item next"><a href="#" class="page-link">&gt;</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-=======
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-tittle" style="font-size: 20px;">
-                        Data Kategori
->>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
                     </div>
-                    <div class="card-tools">
-                        <a href="{{ url('Kategori/create') }}" class="btn btn-dark btn-sm">
-                            <i class="fa fa-plus"></i> Tambah Kategori
-                        </a>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Kategori</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Aksi</td>
-                                <td>
-                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
     </section>
-<<<<<<< HEAD
 
     <!-- Tambah Kategori Modal -->
     <div class="modal fade" id="tambahkategoriModal" tabindex="-1" role="dialog" aria-labelledby="tambahkategoriModalLabel" aria-hidden="true">
@@ -158,7 +78,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('Admin/Kategori') }}" method="post">
+                    <form action="{{ url('admin/kategori') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="nama_kategori">Nama Kategori</label>
@@ -186,7 +106,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('Admin/Kategori', $kat->id_kategori) }}" method="post">
+                    <form action="{{ url('admin/kategori', $kat->id_kategori) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -203,6 +123,34 @@
         </div>
     </div>
     @endforeach
-=======
->>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
+
+    <!-- Lihat Kategori Modal -->
+    @foreach($kategori as $kat)
+    <div class="modal fade" id="lihatkategoriModal{{$kat->id_kategori}}" tabindex="-1" role="dialog" aria-labelledby="lihatkategoriModalLabel{{$kat->id_kategori}}" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="padding: 15px;">
+                    <h5 class="modal-title w-100 text-center" id="lihatkategoriModalLabel{{$kat->id_kategori}}" style="font-weight: bold;">Detail Kategori</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Kode kategori</th>
+                                <td><span class="badge badge-success">{{ $kat->id_kategori }}</span></td>
+                            </tr>
+                            <tr>
+                                <th>Nama kategori</th>
+                                <td>{{ $kat->nama_kategori }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
 </x-admin>

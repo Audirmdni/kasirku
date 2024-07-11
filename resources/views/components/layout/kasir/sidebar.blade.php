@@ -2,7 +2,7 @@
     <!-- Sidebar Style -->
     <style>
       .brand-link {
-        background-color: #ff6600;
+        background-color: #059212;
       }
   
       .main-sidebar {
@@ -33,7 +33,8 @@
       }
   
       .nav-icon {
-        color: #ff6600;
+      
+        color: #008000;
       }
     </style>
   
