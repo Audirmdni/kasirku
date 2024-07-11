@@ -70,6 +70,24 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ url('kasir/shift') }}" class="nav-link">
+                <i class="nav-icon fas fa-cash-register"></i>
+                <p>
+                  Shift
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('kasir/laporan') }}" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                <p>
+                  Laporan
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+            </li>
            
            
         

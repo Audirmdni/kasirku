@@ -50,17 +50,37 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
+
             <a href="{{(url('admin'))}}" class="nav-link {{request()->is('admin*') ? '' : ''}}">
+
+            <a href="{{(url('Admin/Beranda'))}}" class="nav-link {{request()->is('Admin/Beranda*') ? '' : ''}}">
+
+            <a href="pages/widgets.html" class="nav-link">
+
+            <a href="Admin/Beranda" class="nav-link">
+
+            <a href="Admin/Beranda" class="nav-link">
+
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Beranda
+                Dashboard
                 <span class="right badge badge-danger"></span>
               </p>
             </a>
           </li>
           <li class="nav-header">DATABASE</li>
           <li class="nav-item">
+
             <a href="{{(url('admin/produk'))}}" class="nav-link {{request()->is('admin/produk*') ? '' : ''}}">
+
+            <a href="{{(url('Admin/Produk'))}}" class="nav-link {{request()->is('Admin/Produk*') ? '' : ''}}">
+
+            <a href="pages/calendar.html" class="nav-link">
+
+            <a href="Admin/Produk" class="nav-link">
+
+            <a href="Admin/Produk" class="nav-link">
+
               <i class="nav-icon fas fa-box"></i>
               <p>
                 Produk
@@ -70,6 +90,14 @@
           </li>
           <li class="nav-item">
             <a href="{{(url('admin/kategori'))}}" class="nav-link {{request()->is('admin/kategori*') ? '' : ''}}">
+
+
+            <a href="{{(url('Admin/Kategori'))}}" class="nav-link {{request()->is('Admin/Kategori*') ? '' : ''}}">
+
+            <a href="Admin/Kategori" class="nav-link">
+
+            <a href="Admin/Kategori" class="nav-link">
+
               <i class="nav-icon fas fa-list"></i>
               <p>
                 Kategori
@@ -84,16 +112,15 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">TRANSAKSI</li>
           <li class="nav-item">
             <a href="{{(url('admin/pengeluaran'))}}" class="nav-link {{request()->is('admin/penjualan*') ? '' : ''}}">
               <i class="nav-icon far fa-money-bill-alt"></i>
               <p>
-                Pengeluaran
-                <span class="badge badge-info right"></span>
+                Diskon
               </p>
             </a>
           </li>
+          <li class="nav-header">TRANSAKSI</li>
           <li class="nav-item">
             <a href="{{(url('admin/penjualan'))}}" class="nav-link {{request()->is('admin/penjualan*') ? '' : ''}}">
               <i class="nav-icon fas fa-cash-register"></i>

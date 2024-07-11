@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Kasir\KasirHomeController;
-use App\Http\Controllers\Kasir\KasirTransaksiController;
+
 use App\Http\Controllers\AuthController;
 
 
@@ -29,9 +28,10 @@ Route::prefix('admin')->group(function () {
 });
 
 
+
+
+
 Route::prefix('kasir')->group(function () {
-    Route::get('/', [KasirHomeController::class, 'index']);
-    Route::get('/transaksi', [KasirTransaksiController::class, 'index']);
-    Route::get('/create', [KasirTransaksiController::class, 'create']);
-    Route::get('/detail', [KasirTransaksiController::class, 'detail']);
+    include __DIR__."/front/__.php";
+    
 });
