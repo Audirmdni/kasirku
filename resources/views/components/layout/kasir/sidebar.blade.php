@@ -2,7 +2,7 @@
     <!-- Sidebar Style -->
     <style>
       .brand-link {
-        background-color: #ff6600;
+        background-color: #64c702;
       }
   
       .main-sidebar {
@@ -33,7 +33,7 @@
       }
   
       .nav-icon {
-        color: #ff6600;
+        color: #64c702;
       }
     </style>
   
@@ -65,6 +65,24 @@
                 <i class="nav-icon fas fa-box"></i>
                 <p>
                   Transaksi
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('kasir/shift') }}" class="nav-link">
+                <i class="nav-icon fas fa-cash-register"></i>
+                <p>
+                  Shift
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('kasir/laporan') }}" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                <p>
+                  Laporan
                   <span class="badge badge-info right"></span>
                 </p>
               </a>
