@@ -1,7 +1,7 @@
 <!--Header Style-->
 <style>
     .custom-navbar {
-      background-color: #ff6600;
+      background-color: #64c702;
     }
   
     .fa,
@@ -24,7 +24,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#" style="color: #ffffff; font-family: 'Times New Roman', serif;">
-          Audi Ramadani
+          Rahmad Oki Gianto
           <i class="fas fa-user-alt" style="margin-left: 10px;"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="color: #ffffff; font-family: 'Times New Roman', serif;">
