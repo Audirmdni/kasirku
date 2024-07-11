@@ -2,11 +2,15 @@
 
 namespace App\Models\Admin;
 
+<<<<<<< HEAD
 
 use Illuminate\Support\Carbon;
 use Milon\Barcode\DNS1D;
 use App\Models\Model;
 use App\Models\Admin\Kategori;
+=======
+use Illuminate\Database\Eloquent\Model;
+>>>>>>> parent of a7ad9c9 (update admin baru)
 
 class Produk extends Model
 {
@@ -21,6 +25,7 @@ class Produk extends Model
         'harga_jual',
         'stok',
         'diskon',
+<<<<<<< HEAD
         'created_at',
         'updated_at',
     ];
@@ -38,20 +43,13 @@ class Produk extends Model
     protected $casts = [
         'created_at' => 'datetime:d-m-Y H:i:s',
         'id_kategori', 'nama_produk', 'stok', 'harga_dasar', 'harga_jual', 'diskon',
+=======
+    ];
+>>>>>>> parent of a7ad9c9 (update admin baru)
 
     ];
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'id_kategori');
-    }
-
-    public function getCreatedAtAttribute($value)
-    {
-        return Carbon::parse($value)->timezone('Asia/Jakarta')->format('d-m-Y H:i:s');
-    }
-
-    public function generateBarcode()
-    {
-        return DNS1D::getBarcodePNGPath($this->kode_produk, 'C39', 3, 33, array(1, 1, 1), true);
     }
 }

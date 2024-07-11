@@ -15,33 +15,29 @@ class ProdukController extends Controller
         $data['list_produk'] = Produk::all();
         return view('Admin.Produk.index', $data);
     }
+<<<<<<< HEAD
 
 
     // Method untuk pencarian produk
     public function search(Request $request)
+=======
+    public function create()
+>>>>>>> parent of a7ad9c9 (update admin baru)
     {
-        $search = $request->get('search');
-
-        $data['produk'] = Produk::where('nama_produk', 'like', '%' . $search . '%')
-            ->orWhere('kode_produk', 'like', '%' . $search . '%')
-            ->with('kategori')
-            ->paginate(10);
-
-        $data['kategori'] = Kategori::all();
-        $data['search'] = $search;
-
-        return view('Admin.Produk.index', $data);
+        $kategoris = Kategori::all();
+        return view('Admin.Produk.create', compact('kategoris'));
     }
+
     public function store(Request $request)
     {
         $request->validate([
-            'kode_produk' => 'required|unique:produk,kode_produk,NULL,id_produk',
-            'nama_produk' => 'required|string|max:255',
-            'id_kategori' => 'required|exists:kategori,id_kategori',
-            'harga_beli' => 'required|numeric|min:0',
-            'harga_jual' => 'required|numeric|min:0',
-            'stok' => 'required|integer|min:0',
-            'diskon' => 'required|numeric|min:0|max:100',
+            'kode_produk' => 'required',
+            'nama_produk' => 'required',
+            'id_kategori' => 'required',
+            'harga_beli' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required',
+            'diskon' => 'required',
         ]);
     }
 
@@ -67,30 +63,23 @@ class ProdukController extends Controller
     public function edit()
     {
         $data['produk'] = Produk::find($id);
-        if (!$data['produk']) {
-            return redirect('Admin/Produk')->with('error', 'Produk tidak ditemukan');
-        }
-        $data['kategoris'] = Kategori::all();
+        $data['kategoris'] = Kategori::all(); // Mengambil semua kategori untuk dropdown
         return view('Admin.Produk.edit', $data);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_produk' => 'required|unique:produk,kode_produk,' . $id . ',id_produk',
-            'nama_produk' => 'required|string|max:255',
-            'id_kategori' => 'required|exists:kategori,id_kategori',
-            'harga_beli' => 'required|numeric|min:0',
-            'harga_jual' => 'required|numeric|min:0',
-            'stok' => 'required|integer|min:0',
-            'diskon' => 'required|numeric|min:0|max:100',
+            'kode_produk' => 'required',
+            'nama_produk' => 'required',
+            'id_kategori' => 'required',
+            'harga_beli' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required',
+            'diskon' => 'required',
         ]);
 
         $produk = Produk::find($id);
-        if (!$produk) {
-            return redirect('Admin/Produk')->with('error', 'Produk tidak ditemukan');
-        }
-
         $produk->kode_produk = $request->kode_produk;
         $produk->nama_produk = $request->nama_produk;
         $produk->id_kategori = $request->id_kategori;
@@ -106,9 +95,6 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         $produk = Produk::find($id);
-        if (!$produk) {
-            return redirect('Admin/Produk')->with('error', 'Produk tidak ditemukan');
-        }
         $produk->delete();
 
         return back()->with('success', 'Data berhasil dihapus');

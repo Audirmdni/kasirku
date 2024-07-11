@@ -52,13 +52,17 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="{{(url('Admin/Beranda'))}}" class="nav-link {{request()->is('Admin/Beranda*') ? '' : ''}}">
 =======
             <a href="pages/widgets.html" class="nav-link">
 >>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
+=======
+            <a href="Admin/Beranda" class="nav-link">
+>>>>>>> parent of a7ad9c9 (update admin baru)
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Beranda
+                Dashboard
                 <span class="right badge badge-danger"></span>
               </p>
             </a>
@@ -66,10 +70,14 @@
           <li class="nav-header">DATABASE</li>
           <li class="nav-item">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="{{(url('Admin/Produk'))}}" class="nav-link {{request()->is('Admin/Produk*') ? '' : ''}}">
 =======
             <a href="pages/calendar.html" class="nav-link">
 >>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
+=======
+            <a href="Admin/Produk" class="nav-link">
+>>>>>>> parent of a7ad9c9 (update admin baru)
               <i class="nav-icon fas fa-box"></i>
               <p>
                 Produk
@@ -79,10 +87,14 @@
           </li>
           <li class="nav-item">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="{{(url('Admin/Kategori'))}}" class="nav-link {{request()->is('Admin/Kategori*') ? '' : ''}}">
 =======
             <a href="pages/gallery.html" class="nav-link">
 >>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
+=======
+            <a href="Admin/Kategori" class="nav-link">
+>>>>>>> parent of a7ad9c9 (update admin baru)
               <i class="nav-icon fas fa-list"></i>
               <p>
                 Kategori
@@ -90,25 +102,24 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{(url('Admin/Supplier'))}}" class="nav-link {{request()->is('Admin/Supplier*') ? '' : ''}}">
+            <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon fas fa-truck"></i>
               <p>
                 Supplier
               </p>
             </a>
           </li>
-          <li class="nav-header">TRANSAKSI</li>
           <li class="nav-item">
-            <a href="{{(url('Admin/Pengeluaran'))}}" class="nav-link {{request()->is('Admin/Penjualan*') ? '' : ''}}">
-              <i class="nav-icon far fa-money-bill-alt"></i>
+            <a href="pages/gallery.html" class="nav-link">
+              <i class="nav-icon fas fa-tags"></i>
               <p>
-                Pengeluaran
-                <span class="badge badge-info right"></span>
+                Diskon
               </p>
             </a>
           </li>
+          <li class="nav-header">TRANSAKSI</li>
           <li class="nav-item">
-            <a href="{{(url('Admin/Penjualan'))}}" class="nav-link {{request()->is('Admin/Penjualan*') ? '' : ''}}">
+            <a href="pages/calendar.html" class="nav-link">
               <i class="nav-icon fas fa-cash-register"></i>
               <p>
                 Penjualan
@@ -117,7 +128,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{(url('Admin/Pembelian'))}}" class="nav-link {{request()->is('Admin/Pembelian*') ? '' : ''}}">
+            <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Pembelian
@@ -125,18 +136,9 @@
             </a>
           </li>
           </li>
-          <li class="nav-item">
-            <a href="{{(url('Admin/Pembelian'))}}" class="nav-link {{request()->is('Admin/Pembelian*') ? '' : ''}}">
-              <i class="nav-icon fa fa-file"></i>
-              <p>
-                Laporan
-              </p>
-            </a>
-          </li>
-          </li>
           <li class="nav-header">SISTEM</li>
           <li class="nav-item">
-            <a href="{{(url('Admin/User'))}}" class="nav-link {{request()->is('Admin/User*') ? '' : ''}}">
+            <a href="pages/calendar.html" class="nav-link">
               <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 User
@@ -145,7 +147,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{(url('Admin/Pengaturan'))}}" class="nav-link {{request()->is('Admin/Pengaturan*') ? '' : ''}}">
+            <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Pengaturan
