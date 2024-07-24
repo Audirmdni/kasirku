@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\AuthController;
-
-
+use App\Http\Controllers\Front\BaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +34,11 @@ Route::prefix('kasir')->group(function () {
     include "_/front.php";
     
 });
+
+Route::get('/', [BaseController::class, 'index']);
+
+
+
+
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'registerProses'])->name('register.proses');
