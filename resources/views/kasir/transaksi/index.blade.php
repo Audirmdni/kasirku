@@ -7,7 +7,7 @@
         </div>
 
         <div class="card-body">
-            <table class="table table-hover table-bordered">
+            <table id="example1" class="table table-hover table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -85,8 +85,7 @@
     </div>
 
     @push('script')
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       
         <script>
             function printReceipt() {
                 var printContents = document.querySelector('.modal-body .receipt').innerHTML;
@@ -174,5 +173,7 @@
                 });
             });
         </script>
+
+
     @endpush
 </x-kasir>

@@ -200,8 +200,6 @@
         </div>
     </div>
     @endforeach
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     <!-- Lihat Produk Modal -->
     @foreach($produk as $prod)
@@ -263,8 +261,7 @@
         </div>
     </div>
     @endforeach
-<<<<<<< HEAD
-=======
+
 
     @push('scripts')
     <script>
@@ -273,11 +270,5 @@
         }
     </script>
     @endpush
-=======
->>>>>>> ebdf7e1cdc81dbd230fb7f70792df4ef2b8018df
-=======
->>>>>>> parent of a7ad9c9 (update admin baru)
-=======
->>>>>>> parent of a7ad9c9 (update admin baru)
->>>>>>> ce999cdf3237bceaaf246b6adacd02f46923e14d
+
 </x-admin>
