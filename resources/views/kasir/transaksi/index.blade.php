@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- struk pembayaran -->
     <div class="modal fade" id="printReceiptModal" tabindex="-1" role="dialog"
         aria-labelledby="printReceiptModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -72,7 +72,7 @@
                         </table>
                         <hr>
                         <p><strong>Total Pembayaran :</strong> <span id="total_harga"></span></p>
-                        <p><strong>Diskon:</strong> <span id="diskon"></span></p>
+
 
                     </div>
                 </div>
@@ -85,7 +85,6 @@
     </div>
 
     @push('script')
-       
         <script>
             function printReceipt() {
                 var printContents = document.querySelector('.modal-body .receipt').innerHTML;
@@ -113,20 +112,6 @@
                                 style: 'currency',
                                 currency: 'IDR'
                             }).format(data.total_amount));
-                            let diskon = parseFloat(data.diskon) || 0;
-
-                          
-                            if (diskon > 1) {
-                                diskon = diskon / 100;
-                            }
-
-                            
-                            $('#diskon').text(new Intl.NumberFormat('id-ID', {
-                                style: 'percent',
-                                maximumFractionDigits: 2
-                            }).format(diskon));
-
-
                             var items = '';
                             data.details.forEach(function(detail) {
                                 items += '<tr>' +
@@ -173,7 +158,5 @@
                 });
             });
         </script>
-
-
     @endpush
 </x-kasir>
