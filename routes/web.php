@@ -32,13 +32,11 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('kasir')->group(function () {
     include "_/front.php";
-    
 });
 
-Route::get('/', [BaseController::class, 'index']);
+Route::get('Dashboard', [HomeController::class, 'showDashboard']);
+Route::resource('Produk', ProdukController::class);
 
-
-
-
-Route::get('register', [AuthController::class, 'register'])->name('register');
-Route::post('register', [AuthController::class, 'registerProses'])->name('register.proses');
+Route::get('Kategori', [KategoriController::class, 'index']);
+Route::get('Kategori/create', [KategoriController::class, 'create']);
+Route::post('Kategori', [KategoriController::class, 'store']);

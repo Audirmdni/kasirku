@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- /.container-fluid -->
     </section>
 
     <!-- Tambah Kategori Modal -->
