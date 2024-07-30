@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ADMIN | OKEPAY</title>
+    <title>ADMIN | KASIRKU</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -25,8 +25,12 @@
     <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/summernote/summernote-bs4.css">
+
+    <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -41,6 +45,21 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            @foreach (['success', 'warning', 'danger'] as $status)
+            @if (session($status))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        title: "{{ ucfirst($status) }}!",
+                        text: "{{ session($status) }}",
+                        icon: "{{ $status }}",
+                        showConfirmButton: true,
+                        timer: 2000
+                    });
+                });
+            </script>
+            @endif
+            @endforeach
             {{$slot}}
         </div>
         <!-- /.content-wrapper -->
@@ -90,6 +109,62 @@
     <script src="{{url('public')}}/admin-asset/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{url('public')}}/admin-asset/dist/js/demo.js"></script>
+
+    <script src="{{url('public')}}/admin-asset/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{url('public')}}/admin-asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{url('public')}}/admin-asset/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{url('public')}}/admin-asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": true,
+            });
+        });
+
+        //Print Barcode produk//
+        function printBarcodes() {
+            var printContents = document.getElementById('barcodeArea').innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+            location.reload();
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', (e) => {
+                const inputs = form.querySelectorAll('input[required]');
+                let isValid = true;
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        input.style.borderColor = 'red';
+                        isValid = false;
+                    } else {
+                        input.style.borderColor = 'green';
+                    }
+                });
+                if (!isValid) {
+                    e.preventDefault(); // 
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

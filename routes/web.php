@@ -1,18 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\BerandaController;
-use App\Http\Controllers\Admin\KategoriController;
 
 use App\Http\Controllers\Kasir\KasirHomeController;
 use App\Http\Controllers\Kasir\KasirTransaksiController;
+use App\Http\Controllers\AuthController;
 
-use App\Http\Controllers\Admin\ProdukController;
-use App\Http\Controllers\Admin\SupplierController;
-use App\Http\Controllers\Admin\PengeluaranController;
-use App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\Admin\RegisterController;
 
 
 /*
@@ -26,18 +19,13 @@ use App\Http\Controllers\Admin\RegisterController;
 |
 */
 
-Route::get('Admin', [HomeController::class, 'showAdmin']);
-Route::resource('Login', LoginController::class);
-Route::resource('Register', RegisterController::class);
 
-Route::prefix('Admin')->group(function () {
-    Route::resource('Beranda', BerandaController::class);
-    Route::resource('Kategori', KategoriController::class);
-    Route::resource('Produk', ProdukController::class);
-    Route::get('Produk/{id}/qrcode', [ProdukController::class, 'generateQRCode'])->name('admin.produk.qrcode');
-    Route::get('Produk/search', [ProdukController::class, 'search'])->name('admin.produk.search');
-    Route::resource('Supplier', SupplierController::class);
-    Route::resource('Pengeluaran', PengeluaranController::class);
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'LoginProses']);
+Route::get('logout', [AuthController::class, 'logout']);
+
+Route::prefix('admin')->group(function () {
+    include "_/admin.php";
 });
 
 

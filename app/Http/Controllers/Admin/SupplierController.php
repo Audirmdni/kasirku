@@ -22,7 +22,7 @@ class SupplierController extends Controller
         $supplier->telepon = $request->telepon;
         $supplier->save();
 
-        return redirect('Admin/Supplier')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('admin/supplier')->with('success', 'Data Berhasil Ditambahkan');
     }
     public function edit($id)
     {
@@ -38,7 +38,7 @@ class SupplierController extends Controller
         $supplier->telepon = request('telepon');
         $supplier->save();
 
-        return redirect('Admin/Supplier')->with('success', 'Data Berhasil Diperbaharui');
+        return redirect('admin/supplier')->with('success', 'Data Berhasil Diperbaharui');
     }
 
     public function destroy($id)
