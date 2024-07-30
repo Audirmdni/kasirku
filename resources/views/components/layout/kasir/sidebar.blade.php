@@ -2,21 +2,22 @@
     <!-- Sidebar Style -->
     <style>
       .brand-link {
-        background-color: #ff6600;
+        background-color: #059212;
       }
   
       .main-sidebar {
         background-color: #FFFFFF;
       }
   
-      .brand-text {
-        color: #f2f2f2;
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 10px;
-        text-align: center;
-        letter-spacing: 5px;
+      
+    .brand-text {
+      color: #000000;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px;
+      text-align: center;
+      letter-spacing: 5px;
       }
   
       .nav-header {
@@ -33,14 +34,15 @@
       }
   
       .nav-icon {
-        color: #ff6600;
+      
+        color: #008000;
       }
     </style>
   
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{url('public')}}/admin-asset/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text">OKEPAY</span>
+      <span class="brand-text">KASIRKU</span>
     </a>
   
     <!-- Sidebar -->
@@ -64,7 +66,17 @@
               <a href="{{ url('kasir/transaksi') }}" class="nav-link">
                 <i class="nav-icon fas fa-box"></i>
                 <p>
-                  Transaksi
+                  Penjualan
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+            </li>
+           
+            <li class="nav-item">
+              <a href="{{ url('kasir/reports') }}" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                <p>
+                  Laporan
                   <span class="badge badge-info right"></span>
                 </p>
               </a>

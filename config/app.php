@@ -2,13 +2,58 @@
 
 use Illuminate\Support\Facades\Facade;
 
+
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application. This value is used when the
+    | framework needs to place the application's name in a notification or
+    | any other location as required by the application or its packages.
+    |
+    */
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services the application utilizes. Set this in your ".env" file.
+    |
+    */
+
     'env' => env('APP_ENV', 'production'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is in debug mode, detailed error messages with
+    | stack traces will be shown on every error that occurs within your
+    | application. If disabled, a simple generic error page is shown.
+    |
+    */
+
     'debug' => (bool) env('APP_DEBUG', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used by the console to properly generate URLs when using
+    | the Artisan command line tool. You should set this to the root of
+    | your application so that it is used when running Artisan tasks.
+    |
+    */
 
     'url' => env('APP_URL', 'http://localhost'),
 
@@ -25,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Jakarta',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'id',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -64,19 +109,57 @@ return [
     |
     */
 
-    'faker_locale' => 'id_ID',
+    'faker_locale' => 'en_US',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Encryption Key
+    |--------------------------------------------------------------------------
+    |
+    | This key is used by the Illuminate encrypter service and should be set
+    | to a random, 32 character string, otherwise these encrypted strings
+    | will not be safe. Please do this before deploying an application!
+    |
+    */
 
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Maintenance Mode Driver
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options determine the driver used to determine and
+    | manage Laravel's "maintenance mode" status. The "cache" driver will
+    | allow maintenance mode to be controlled across multiple machines.
+    |
+    | Supported drivers: "file", "cache"
+    |
+    */
 
     'maintenance' => [
         'driver' => 'file',
         // 'store'  => 'redis',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Autoloaded Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | The service providers listed here will be automatically loaded on the
+    | request to your application. Feel free to add your own services to
+    | this array to grant expanded functionality to your applications.
+    |
+    */
+
     'providers' => [
 
+        /*
+         * Laravel Framework Service Providers...
+         */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -99,22 +182,43 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-        Milon\Barcode\BarcodeServiceProvider::class,
+       
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Class Aliases
+    |--------------------------------------------------------------------------
+    |
+    | This array of class aliases will be registered when this application
+    | is started. However, feel free to register as many as you wish as
+    | the aliases are "lazy" loaded so they don't hinder performance.
+    |
+    */
+
+    
+
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+     
+         
+            'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
+    
     ])->toArray(),
 
-    'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-    'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
-    'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 ];

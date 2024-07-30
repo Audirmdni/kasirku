@@ -70,7 +70,6 @@
       color: #FFFFFF;
     }
   </style>
-
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
     <img src="{{ url('public/admin-asset/dist/img/Kasir.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
