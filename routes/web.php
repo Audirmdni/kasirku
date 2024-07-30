@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+use App\Http\Controllers\Kasir\KasirHomeController;
+use App\Http\Controllers\Kasir\KasirTransaksiController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Front\BaseController;
+
 
 /*
 |--------------------------------------------------------------------------

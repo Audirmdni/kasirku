@@ -2,15 +2,9 @@
 
 namespace App\Models\Admin;
 
-
-
-
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Milon\Barcode\DNS1D;
-use App\Models\DetailPenjualan;
-
-
 
 class Produk extends Model
 {
@@ -36,15 +30,6 @@ class Produk extends Model
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
-    }
-
-    public function penjualan()
-    {
-        return $this->hasMany(Penjualan::class, 'id_produk', 'id_produk');
-    }
-
-    function detailPenjualan(){
-        return $this->hasMany(DetailPenjualan::class, 'id_produk', 'id_produk');
     }
 
     public function getCreatedAtAttribute($value)

@@ -1,4 +1,19 @@
 <x-admin>
+    <style>
+        .pagination .page-link {
+            color: #526D82;
+        }
+
+        .pagination .page-link:hover {
+            color: #ffffff;
+            background-color: #526D82;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #526D82;
+            border-color: #526D82;
+        }
+    </style>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <!-- Header content -->
@@ -14,7 +29,7 @@
                             <h3 class="card-title" style="font-weight: bold; font-size: 18px;">DAFTAR USER</h3>
                             <div class="card-tools">
 
-                                <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#tambahprodukModal">
+                                <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#tambahprodukModal">
                                     <i class="fa fa-plus"></i> <span class="font-weight-bold">Tambah</span>
                                 </button>
                             </div>
@@ -24,7 +39,7 @@
 
                             <!-- Tabel Data Produk -->
                             <div class="table-responsive">
-                                <table id="example2" class="table table-bordered table-striped">
+                                <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th class="text-center" style="width: 3%;">No.</th>
@@ -58,7 +73,7 @@
                                             </td>
                                             <td class="text-center">{{$user->nama}}</td>
                                             <td class="text-center">
-                                                <img src="{{ url("public/$user->poto") }}" style="width:30%; height:30%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                                <img src="{{ url('public') }}/{{ $user->foto }}" style="width:30%; height:30%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                                             </td>
                                         </tr>
                                         @endforeach
@@ -96,12 +111,11 @@
                             <input type="text" class="form-control" name="username" placeholder="Masukkan Username" required>
                         </div>
 
-
+                        3
                         <div class="form-group">
                             <label for="stok">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Masukkan" required>
                         </div>
-
                         <div class="form-group">
                             <label for="stok">Poto</label>
                             <input type="file" class="form-control" name="foto" accept=".jpg, .jpeg, .png" required>
@@ -145,7 +159,6 @@
                             <label for="stok">Password</label>
                             <input type="password" class="form-control" name="password">
                         </div>
-
                         <div class="form-group">
                             <label>Poto</label>
                             <div class="row">
@@ -153,7 +166,6 @@
                                     <img src="{{ url("public/$user->poto") }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                                 </div>
                                 <div class="col-md-6">
-
                                     <input type="file" class="form-control" name="foto" accept=".jpg, .jpeg, .png">
                                 </div>
                             </div>
@@ -207,11 +219,4 @@
     </div>
     @endforeach
 
-    @push('scripts')
-    <script>
-        function printBarcodes() {
-            alert('Mencetak barcodes...');
-        }
-    </script>
-    @endpush
 </x-admin>

@@ -39,13 +39,11 @@ class KasirController extends Controller
 
     public function show(string $id)
     {
-        //
     }
 
 
     public function edit(string $id)
     {
-        //
     }
 
 
