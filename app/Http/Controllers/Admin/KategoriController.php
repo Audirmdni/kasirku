@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Kategori;
+
 
 class KategoriController extends Controller
 {
-    function index()
+    public function index()
     {
         return view('Admin.Kategori.index');
     }

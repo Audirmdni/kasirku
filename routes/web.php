@@ -25,13 +25,7 @@ Route::get('Login', function () {
 });
 
 Route::get('Dashboard', [HomeController::class, 'showDashboard']);
-
-// Route::get('Produk', [ProdukController::class, 'index']);
-// Route::get('Produk/create', [ProdukController::class, 'create']);
-// Route::post('Produk', [ProdukController::class, 'store']);
-
 Route::resource('Produk', ProdukController::class);
-
 
 Route::get('Kategori', [KategoriController::class, 'index']);
 Route::get('Kategori/create', [KategoriController::class, 'create']);
