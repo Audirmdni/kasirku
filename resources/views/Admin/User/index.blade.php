@@ -110,8 +110,6 @@
                             <label for="nama_produk">Username</label>
                             <input type="text" class="form-control" name="username" placeholder="Masukkan Username" required>
                         </div>
-
-                        3
                         <div class="form-group">
                             <label for="stok">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Masukkan" required>
@@ -153,8 +151,6 @@
                             <label for="nama_produk">Username</label>
                             <input type="text" class="form-control" name="username" value="{{$user->username}}">
                         </div>
-
-
                         <div class="form-group">
                             <label for="stok">Password</label>
                             <input type="password" class="form-control" name="password">
