@@ -21,7 +21,7 @@ class PengeluaranController extends Controller
         $pengeluaran->nominal = $request->nominal;
         $pengeluaran->save();
 
-        return redirect('Admin/Pengeluaran')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('admin/pengeluaran')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     public function edit($id)
@@ -37,7 +37,7 @@ class PengeluaranController extends Controller
         $pengeluaran->nominal = $request->nominal;
         $pengeluaran->save();
 
-        return redirect('Admin/Pengeluaran')->with('success', 'Data Berhasil Diperbaharui');
+        return redirect('admin/pengeluaran')->with('success', 'Data Berhasil Diperbaharui');
     }
 
     public function destroy($id)
