@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class BaseController extends Controller
 {
-    //
+    function index(){
+        return view('frotend.index');
+    }
 }

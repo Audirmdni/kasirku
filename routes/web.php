@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\ProdukController;
-use App\Http\Controllers\Admin\KategoriController;
+
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Front\BaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,21 @@ use App\Http\Controllers\Admin\KategoriController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'LoginProses']);
+Route::get('logout', [AuthController::class, 'logout']);
+
+Route::prefix('admin')->group(function () {
+    include "_/admin.php";
 });
 
-Route::get('Login', function () {
-    return view('components.login');
+
+
+
+
+Route::prefix('kasir')->group(function () {
+    include "_/front.php";
 });
 
 Route::get('Dashboard', [HomeController::class, 'showDashboard']);
