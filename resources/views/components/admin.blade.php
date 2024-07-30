@@ -35,7 +35,6 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
         <!-- Navbar -->
         <x-layout.admin.header />
         <!-- /.navbar -->
