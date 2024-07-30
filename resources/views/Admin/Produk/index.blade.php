@@ -37,11 +37,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title" style="font-weight: bold; margin-bottom: 0; font-size: 18px;">DAFTAR PRODUK</h3>
+                            <h3 class="card-title" style="font-weight: bold; font-size: 18px;">DAFTAR PRODUK</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-md btn-custom-color" onclick="printBarcodes()">
                                     <i class="fa fa-print"></i> <span class="font-weight-bold">Cetak Barcode</span>
                                 </button>
+
                                 <!-- Cetak Barcode -->
                                 <div id="barcodeArea" style="display: none;">
                                     <div style="text-align: center; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
@@ -84,6 +85,9 @@
                                             <td class="text-center">{{ $index + 1 }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#lihatprodukModal{{$prod->id_produk}}">
+                                                        <i class="fa fa-info-circle"></i>
+                                                    </button>
                                                     <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editprodukModal{{$prod->id_produk}}">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
@@ -119,10 +123,10 @@
     <div class="modal fade" id="tambahprodukModal" tabindex="-1" role="dialog" aria-labelledby="tambahprodukModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header" style="padding: 10px;">
-                    <h5 class="modal-title w-100 text-center" id="tambahprodukModalLabel" style="font-size: 17px; font-weight: bold;">Tambah Produk</h5>
+                <div class="modal-header" style="padding: 15px;">
+                    <h5 class="modal-title w-100 text-center" id="tambahprodukModalLabel" style="font-weight: bold;">Tambah Produk</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
-                        <span aria-hidden="true" style="color: white;">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -144,25 +148,37 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="harga_beli">Harga Beli</label>
-                            <input type="text" class="form-control" id="harga_beli" name="harga_beli" placeholder="Masukkan Harga Beli" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="harga_jual">Harga Jual</label>
-                            <input type="text" class="form-control" id="harga_jual" name="harga_jual" placeholder="Masukkan Harga Jual" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="diskon">Diskon (%)</label>
-                            <input type="text" class="form-control" id="diskon" name="diskon" placeholder="Masukkan Diskon Produk">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="harga_beli">Harga Beli</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="harga_beli" name="harga_beli" placeholder="Masukkan Harga Beli" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="harga_jual">Harga Jual</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="harga_jual" name="harga_jual" placeholder="Masukkan Harga Jual" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="diskon">Diskon (%)</label>
+                                <input type="text" class="form-control" id="diskon" name="diskon" placeholder="Masukkan Diskon Produk">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="stok">Stok</label>
                             <input type="text" class="form-control" id="stok" name="stok" placeholder="Masukkan Stok Produk" required>
                         </div>
                         <div class="text-right">
-                            <button type="button" class="btn btn-sm btn-danger btn-xs" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-sm btn-success btn-xs">Simpan</button>
+                            <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-md btn-success">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -232,8 +248,8 @@
                             <input type="text" class="form-control" id="stok" name="stok" value="{{ $prod->stok }}" required>
                         </div>
                         <div class="text-right">
-                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-sm btn-success">Simpan</button>
+                            <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-md btn-success">Simpan</button>
                         </div>
                     </form>
                 </div>

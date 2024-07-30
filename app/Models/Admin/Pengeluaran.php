@@ -13,7 +13,7 @@ class Pengeluaran extends Model
         'deskripsi', 'nominal',
     ];
 
-    public function getCreatedAtAttribute($value)
+    public function getTanggalAttribute($value)
     {
         return Carbon::parse($value)->timezone('Asia/Jakarta')->isoFormat('dddd, DD MMMM YYYY');
     }
