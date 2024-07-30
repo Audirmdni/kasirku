@@ -21,6 +21,7 @@ class User extends Authenticatable
 
     function handleUploadPoto()
     {
+        $this->handleDeletePoto();
         if (request()->hasFile('foto')) {
             $foto = request()->file('foto');
             $destination = "user";
@@ -29,6 +30,18 @@ class User extends Authenticatable
             $url = $foto->storeAs($destination, $filename);
             $this->foto = "app/" . $url;
             $this->save();
+        }
+    }
+
+    function handleDeletePoto()
+    {
+        $foto = $this->foto;
+        if ($foto) {
+            $path = public_path($foto);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+            return true;
         }
     }
 }

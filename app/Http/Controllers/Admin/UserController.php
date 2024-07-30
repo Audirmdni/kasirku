@@ -75,6 +75,7 @@ class UserController extends Controller
     public function destroy($user)
     {
         $user = User::find($user);
+        $user->handleDeletePoto();
         $user->delete();
 
         return back()->with('success', 'Data berhasil dihapus');

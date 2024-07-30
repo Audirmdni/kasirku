@@ -140,7 +140,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('admin/user', $user->id) }}" method="post">
+                    <form action="{{ url('admin/user', $user->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
