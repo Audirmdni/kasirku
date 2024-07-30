@@ -27,17 +27,6 @@ Route::prefix('admin')->group(function () {
     include "_/admin.php";
 });
 
-
-
-
-
 Route::prefix('kasir')->group(function () {
     include "_/front.php";
 });
-
-Route::get('Dashboard', [HomeController::class, 'showDashboard']);
-Route::resource('Produk', ProdukController::class);
-
-Route::get('Kategori', [KategoriController::class, 'index']);
-Route::get('Kategori/create', [KategoriController::class, 'create']);
-Route::post('Kategori', [KategoriController::class, 'store']);

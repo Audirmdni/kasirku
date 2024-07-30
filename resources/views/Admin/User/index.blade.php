@@ -163,7 +163,7 @@
                             <label>Poto</label>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img src="{{ url("public/$user->poto") }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                    <img src="{{ url('public') }}/{{ $user->foto }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                                 </div>
                                 <div class="col-md-6">
                                     <input type="file" class="form-control" name="foto" accept=".jpg, .jpeg, .png">
@@ -198,7 +198,7 @@
                             <tr class="text-center">
                                 <center>
 
-                                    <img src="{{ url("public/$user->poto") }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                    <img src="{{ url('public') }}/{{ $user->foto }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                                 </center>
                             </tr>
                             <tr>

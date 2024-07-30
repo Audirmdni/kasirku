@@ -26,8 +26,8 @@ class UserController extends Controller
         // Validasi data
         $request->validate([
             'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed', // Enkripsi password
+            'username' => 'required|string|max:255|unique:user',
+            'password' => 'required|min:8', // Enkripsi password
         ]);
 
         $user = new User();
