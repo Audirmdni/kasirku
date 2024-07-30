@@ -23,16 +23,6 @@ class Produk extends Model
         'updated_at',
     ];
 
-    public static $rules = [
-        'kode_produk' => 'required|unique:produk,kode_produk',
-        'nama_produk' => 'required',
-        'id_kategori' => 'required',
-        'harga_beli' => 'required|numeric',
-        'harga_jual' => 'required|numeric',
-        'diskon' => 'nullable|numeric',
-        'stok' => 'required|numeric',
-    ];
-
     protected $casts = [
         'created_at' => 'datetime:d-m-Y H:i:s',
     ];

@@ -70,13 +70,13 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_produk' => 'required|unique:produk,kode_produk,' . $id . ',id_produk',
-            'nama_produk' => 'required|string|max:255',
-            'id_kategori' => 'required|exists:kategori,id_kategori',
-            'harga_beli' => 'required|numeric|min:0',
-            'harga_jual' => 'required|numeric|min:0',
-            'stok' => 'required|integer|min:0',
-            'diskon' => 'required|numeric|min:0|max:100',
+            'kode_produk' => 'required',
+            'nama_produk' => 'required',
+            'id_kategori' => 'required',
+            'harga_beli' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required',
+            'diskon' => 'required',
         ]);
 
         $produk = Produk::find($id);

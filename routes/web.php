@@ -7,7 +7,6 @@ use App\Http\Controllers\Kasir\KasirTransaksiController;
 use App\Http\Controllers\AuthController;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +28,16 @@ Route::prefix('admin')->group(function () {
 });
 
 
+
+
+
 Route::prefix('kasir')->group(function () {
-    Route::get('/', [KasirHomeController::class, 'index']);
-    Route::get('/transaksi', [KasirTransaksiController::class, 'index']);
-    Route::get('/create', [KasirTransaksiController::class, 'create']);
-    Route::get('/detail', [KasirTransaksiController::class, 'detail']);
+    include "_/front.php";
 });
+
+Route::get('Dashboard', [HomeController::class, 'showDashboard']);
+Route::resource('Produk', ProdukController::class);
+
+Route::get('Kategori', [KategoriController::class, 'index']);
+Route::get('Kategori/create', [KategoriController::class, 'create']);
+Route::post('Kategori', [KategoriController::class, 'store']);

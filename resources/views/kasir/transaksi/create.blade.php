@@ -1,156 +1,107 @@
 <x-kasir>
     <div class="card">
-     <div class="card-header">
-         <div class="card-title col-md-12">Tambah Data Transaksi
-            <hr>
-         </div>
-         <button href="" class="btn btn-success " data-toggle="modal" data-target=".bd-example-modal-lg" ><i class="fa fa-plus"></i> Tambah data</button>
-     </div>
- 
-     <div class="card-body">
-       <form action="">
-        @csrf
-        <table class="table table-hover table-bordered">
-            <thead>
-              <tr>
-                <th width="160px" scope="col"><center>no</center></th>
-                <th scope="col"><center>Barang</center></th>
-                <th scope="col"><center>Harga</center></th>
-                <th scope="col"><center>Qty</center></th>
-                <th scope="col"><center>Sub Total</center></th>
-                <th scope="col"><center>Aksi</center></th>
-              </tr>
-            </thead>
-            <tbody>
-               <tr>
-                   <th scope="row"><center>1</center></th>
-                   <td>lorem</td>
-                   <td>lorem</td>
-                   <td>lorem</td>
-                   <td>lorem</td>
-                   <td>
-                       <center>
-                           <a href="" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
-                       </center>
-                   </td>
-               </tr>
-               <tr>
-                   <td>Total</td>
-                   <td colspan="3"></td>
-                   <td colspan="2">lorem</td>
-               </tr>
-               <tr>
-                   <td>Diskon</td>
-                   <td colspan="3"></td>
-                   <td colspan="2">lorem</td>
-               </tr>
-               <tr>
-                   <td>Seluruh Total</td>
-                   <td colspan="3"></td>
-                   <td colspan="2">lorem</td>
-               </tr>
-               
-             
-           
-            </tbody>
-          </table>
+        <div class="card-header">
+            <div class="card-title">Tambah Penjualan</div>
+        </div>
 
-          
-          <hr>
-           <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">No Transaksi</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan No Transaksi">
-                  
-                  </div>
-               </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Uang Pembelian</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Uang pembelian">
-                  
-                  </div>
-               </div>
-            </div>
-           <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Tanggal Transaksi</label>
-                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
-                  
-                  </div>
-               </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Uang Kembalian</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Uang Kembalian">
-                  
-                  </div>
-               </div>
-            </div>
-
-         
-                    <button class="btn btn-primary float-end"><i class="fa fa-save"></i> Simpan</button>
-               
-       </form>
-
-
-
-           
-     </div>
-    </div>
-
-
-  
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"><strong>Data Barang</strong></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="">
+        <div class="card-body">
+            <form action="{{ url('kasir/transaksi/store') }}" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">nama Barang</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>--pilih--</option>
-                      <option>lorem</option>
-                      <option>lorem</option>
-                      <option>lorem</option>
-                      <option>lorem</option>
-                      
-                    </select>
-                  </div>
-               
-                <div class="form-group">
-                    <label for="exampleInputEmail1">harga</label>
-                    <input type="number" class="form-control" value="1" id="exampleInputEmail1" aria-describedby="emailHelp" >
-                  
-                  </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Stok</label>
-                    <input type="number" class="form-control" value="1" id="exampleInputEmail1" aria-describedby="emailHelp" >
-                  
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Qty</label>
-                    <input type="number" class="form-control" value="1"  id="exampleInputEmail1" aria-describedby="emailHelp" >
-                  
-                  </div>
+                <div class="mb-3">
+                    <label for="invoice_number" class="form-label">No Nota:</label>
+                    <input type="text" name="invoice_number" id="invoice_number" class="form-control @error('invoice_number') is-invalid @enderror" required>
+                    @error('invoice_number')
+                    <p class="alert alert-danger  mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                  <div class="modal-footer">
-                     <button class="btn btn-primary float-right"><i class="fa fa-save"></i> Simpan</button>
-                  </div>
+                <div class="mb-3">
+                    <label for="produk" class="form-label">Produk:</label>
+                    <div id="product-list">
+                        <div class="product-item row">
+                            <div class="col-md-6">
+                                <select name="produk[0][id]" class="form-control" required>
+                                    <option value="">--pilih--</option>
+                                    @foreach ($produk as $product)
+                                        <option value="{{ $product->id_produk }}">{{ $product->nama_produk }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="number" name="produk[0][quantity]" class="form-control" placeholder="Quantity" required>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- Initial button setup -->
+                                <button type="button" class="btn btn-primary add-product">Tambah Produk</button>
+                                <button type="button" class="btn btn-danger d-none remove-product">Hapus Produk</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success float-right">Simpan</button>
             </form>
-              </div>
+        </div>
     </div>
-   
-  </div>
-</div>
- </x-kasir> 
+
+    @push('script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Handle Add Product button click
+            $('#product-list').on('click', '.add-product', function() {
+                var $productList = $('#product-list');
+                var $lastItem = $productList.find('.product-item:last');
+                var $newItem = $lastItem.clone();
+                var newIndex = $productList.find('.product-item').length;
+
+                // Update the names of the inputs and clear their values
+                $newItem.find('select').attr('name', `produk[${newIndex}][id]`).val('');
+                $newItem.find('input').attr('name', `produk[${newIndex}][quantity]`).val('');
+
+                // Hide "Tambah Produk" button and show "Hapus Produk" button for previous items
+                $productList.find('.add-product').addClass('d-none');
+                $productList.find('.remove-product').removeClass('d-none');
+
+                // Show "Tambah Produk" button only for the new last item
+                $newItem.find('.add-product').removeClass('d-none');
+                $newItem.find('.remove-product').addClass('d-none');
+
+                // Append new item
+                $productList.append($newItem);
+            });
+
+            // Handle Remove Product button click
+            $('#product-list').on('click', '.remove-product', function() {
+                $(this).closest('.product-item').remove();
+
+                // Ensure the last item has the "Tambah Produk" button and hides "Hapus Produk"
+                var $remainingItems = $('#product-list').find('.product-item');
+                if ($remainingItems.length > 0) {
+                    var $lastItem = $remainingItems.last();
+                    $lastItem.find('.add-product').removeClass('d-none');
+                    $lastItem.find('.remove-product').addClass('d-none');
+                }
+            });
+
+            // Initial setup on page load
+            (function initializeProductList() {
+                var $productList = $('#product-list');
+                var $items = $productList.find('.product-item');
+                if ($items.length > 1) {
+                    $items.each(function(index, item) {
+                        var $item = $(item);
+                        if (index === $items.length - 1) {
+                            $item.find('.add-product').removeClass('d-none');
+                            $item.find('.remove-product').addClass('d-none');
+                        } else {
+                            $item.find('.add-product').addClass('d-none');
+                            $item.find('.remove-product').removeClass('d-none');
+                        }
+                    });
+                }
+            })();
+        });
+    </script>
+    @endpush
+</x-kasir>

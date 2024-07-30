@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- /.container-fluid -->
     </section>
 
     <!-- Tambah Kategori Modal -->
@@ -114,7 +114,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title w-100 text-center" id="editkategoriModalLabel{{$kat->id_kategori}}">Edit Kategori</h5>
+                    <h5 class="modal-title" id="editkategoriModalLabel{{$kat->id_kategori}}">Edit Kategori</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -128,8 +128,8 @@
                             <input type="text" class="form-control" id="edit_nama_kategori{{$kat->id_kategori}}" name="nama_kategori" value="{{ $kat->nama_kategori }}" required>
                         </div>
                         <div class="text-right">
-                            <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-md btn-success">Simpan</button>
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-sm btn-success">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -167,5 +167,4 @@
         </div>
     </div>
     @endforeach
-
 </x-admin>
