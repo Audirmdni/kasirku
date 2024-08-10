@@ -1,5 +1,6 @@
 <x-kasir>
-    <div class="card">
+  <div class="container-fluid">
+    <div class="card mt-5">
         <div class="card-header">
             <div class="card-title">Laporan Penjualan</div>
             <a href="{{ route('reports.export', ['start_date' => $startDate, 'end_date' => $endDate]) }}" class="btn btn-primary float-right"><i class="fa fa-download"></i> Export to PDF</a>
@@ -49,4 +50,5 @@
             </table>
         </div>
     </div>
+  </div>
 </x-kasir>

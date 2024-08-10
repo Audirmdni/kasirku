@@ -1,5 +1,6 @@
 <x-kasir>
-    <div class="card">
+   <div class="container-fluid">
+    <div class="card mt-5">
         <div class="card-header">
             <div class="card-title">Tambah Penjualan</div>
         </div>
@@ -67,6 +68,7 @@
             </form>
         </div>
     </div>
+   </div>
 
     @push('script')
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,6 +1,7 @@
 <x-kasir>
-    <x-ui.notif-alert />
-    <div class="card">
+    {{-- <x-ui.notif-alert /> --}}
+ <div class="container-fluid">
+    <div class="card mt-5">
         <div class="card-header">
             <div class="card-title">Data Penjualan</div>
             <a href="{{ url('kasir/transaksi/create') }}" class="btn btn-success float-right"><i class="fa fa-plus"></i>
@@ -49,6 +50,7 @@
             </table>
         </div>
     </div>
+ </div>
 
     <!-- struk pembayaran -->
     <div class="modal fade" id="printReceiptModal" tabindex="-1" role="dialog"

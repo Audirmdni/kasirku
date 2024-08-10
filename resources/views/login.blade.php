@@ -8,57 +8,54 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Login Form, Responsive Web Template, Bootstrap Web Templates, Flat Web Templates">
     <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link href="{{url('public')}}/admin-asset/css_login/style.css" rel='stylesheet' type='text/css' />
     <!-- Google Fonts -->
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+    <style>
+
+        .error{
+          
+            display: flex;
+            align-items: center;
+            align-self: center;
+            justify-content: center;
+        }
+        .alert{
+
+            background-color: red;
+            width: 32%;
+           padding: 1rem;
+            color: white;
+              font-size: 18px;
+              font-weight: bold;
+              border-radius: 0.5rem ;
+
+        }
+    </style>
 </head>
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="{{url('public')}}/admin-asset/index2.html"><b>KASIR</b>KU</a>
-        </div>
-        <!-- /.login-logo -->
-
-        @if ($errors->any())
-        <div class="alert alert-danger">
+<body>
+    <!-- Logo -->
+    <img src="{{ url('public/admin-asset/dist/img/Kasir.png') }}" alt="Logo Kasirku" class="login-logo">
+    <h1>KASIRKU</h1>
+    @if ($errors->any())
+    <div class="error">
+        <div class="alert "  id="alert">
             @foreach ($errors->all() as $error)
                 {{ $error }}
             @endforeach
         </div>
-    @endif
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Silahkan Login</p>
-
-                <form action="{{ url('login') }}" method="POST">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username" name="username">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="*******************">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-4">
-                            <button class="btn btn-primary btn-block">Login</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-
+    </div>
+@endif
+    <div class="w3ls-login box">
+        <!-- Form starts here -->
+        <form id="loginForm" action="{{ url('login') }}" method="POST">
+            @csrf
+            <div class="agile-field-txt">
+                <input type="text" name="username" placeholder="Username" required />
             </div>
             <div class="agile-field-txt">
                 <input type="password" name="password" placeholder="Password" required id="myInput" />
@@ -73,6 +70,13 @@
         </form>
         <!-- Form ends here -->
     </div>
+    
+
+
+
 </body>
+
+
+
 
 </html>

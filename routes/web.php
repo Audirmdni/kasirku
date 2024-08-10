@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Kasir\KasirHomeController;
-use App\Http\Controllers\Kasir\KasirTransaksiController;
+
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Front\BaseController;
 
 
 /*
@@ -30,3 +30,6 @@ Route::prefix('admin')->group(function () {
 Route::prefix('kasir')->group(function () {
     include "_/front.php";
 });
+
+Route::get('/',[BaseController::class, "index"]
+);

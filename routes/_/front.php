@@ -9,7 +9,7 @@ use App\Http\Controllers\Kasir\ReportController;
     
 
 Route::group(['middleware' => 'auth:kasir'], function () {
-    Route::get('/', [KasirHomeController::class, 'index']);
+    Route::get('/beranda', [KasirHomeController::class, 'index']);
     Route::get('/transaksi', [KasirTransaksiController::class, 'index']);
     Route::get('/transaksi/detail/{id}', [KasirTransaksiController::class, 'show']);
     Route::get('/transaksi/getdata/{id}', [KasirTransaksiController::class, 'getdata']);

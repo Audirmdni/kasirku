@@ -31,12 +31,13 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   @stack('style')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+  
   <div class="wrapper">
-
     <!-- Navbar -->
     <x-layout.kasir.header />
     <!-- /.navbar -->
@@ -46,43 +47,34 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div hidden class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Dashboard</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
-
-      <!-- Main content -->
-      <section class="content">
-        <!-- /.container-fluid -->
-        {{ $slot }}
-      </section>
-      <!-- /.content -->
+        @foreach (['success', 'warning', 'danger'] as $status)
+        @if (session($status))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: "{{ ucfirst($status) }}!",
+                    text: "{{ session($status) }}",
+                    icon: "{{ $status }}",
+                    showConfirmButton: true,
+                    timer: 2000
+                });
+            });
+        </script>
+        @endif
+        @endforeach
+        {{$slot}}
     </div>
     <!-- /.content-wrapper -->
 
-    <!-- Main footer -->
+    <!--Main footer -->
     <x-layout.kasir.footer />
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
+        <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
+</div>
 
   <!-- jQuery -->
   <script src="{{url('public')}}/admin-asset/plugins/jquery/jquery.min.js"></script>
