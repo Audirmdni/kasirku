@@ -17,29 +17,31 @@ class ProdukController extends Controller
         return view('Admin.Produk.index', $data);
     }
 
-
     // Method untuk pencarian produk
-    public function search(Request $request){
-        
-    }
-
-    public function create()
-
+    public function search(Request $request)
     {
-        $kategoris = Kategori::all();
-        return view('Admin.Produk.create', compact('kategoris'));
-    }
+        $search = $request->get('search');
 
+        $data['produk'] = Produk::where('nama_produk', 'like', '%' . $search . '%')
+            ->orWhere('kode_produk', 'like', '%' . $search . '%')
+            ->with('kategori')
+            ->paginate(10);
+
+        $data['kategori'] = Kategori::all();
+        $data['search'] = $search;
+
+        return view('Admin.Produk.index', $data);
+    }
     public function store(Request $request)
     {
         $request->validate([
-            'kode_produk' => 'required',
-            'nama_produk' => 'required',
-            'id_kategori' => 'required',
-            'harga_beli' => 'required',
-            'harga_jual' => 'required',
-            'stok' => 'required',
-            'diskon' => 'required',
+            'kode_produk' => 'required|unique:produk,kode_produk,NULL,id_produk',
+            'nama_produk' => 'required|string|max:255',
+            'id_kategori' => 'required|exists:kategori,id_kategori',
+            'harga_beli' => 'required|numeric|min:0',
+            'harga_jual' => 'required|numeric|min:0',
+            'stok' => 'required|integer|min:0',
+            'diskon' => 'required|numeric|min:0|max:100',
         ]);
 
         $produk = new Produk();
@@ -52,7 +54,7 @@ class ProdukController extends Controller
         $produk->diskon = $request->diskon;
         $produk->save();
 
-        return redirect('admin/produk')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('admin/produk')->with('success', 'Produk Berhasil Ditambahkan!');
     }
 
     public function edit($id)

@@ -30,11 +30,11 @@
     <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
         <!-- Navbar -->
         <x-layout.admin.header />
         <!-- /.navbar -->
@@ -44,6 +44,21 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            @foreach (['success', 'warning', 'danger'] as $status)
+            @if (session($status))
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        title: "{{ ucfirst($status) }}!",
+                        text: "{{ session($status) }}",
+                        icon: "{{ $status }}",
+                        showConfirmButton: true,
+                        timer: 2000
+                    });
+                });
+            </script>
+            @endif
+            @endforeach
             {{$slot}}
         </div>
         <!-- /.content-wrapper -->
@@ -99,7 +114,7 @@
     <script src="{{url('public')}}/admin-asset/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{url('public')}}/admin-asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-    <script>
+    <script type="text/javascript">
         $(function() {
             $("#example1").DataTable({
                 "responsive": true,
@@ -115,8 +130,8 @@
                 "responsive": true,
             });
         });
-    </script>
-    <script type="text/javascript">
+
+        //Print Barcode produk//
         function printBarcodes() {
             var printContents = document.getElementById('barcodeArea').innerHTML;
             var originalContents = document.body.innerHTML;
@@ -128,6 +143,25 @@
             document.body.innerHTML = originalContents;
             location.reload();
         }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', (e) => {
+                const inputs = form.querySelectorAll('input[required]');
+                let isValid = true;
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        input.style.borderColor = 'red';
+                        isValid = false;
+                    } else {
+                        input.style.borderColor = 'green';
+                    }
+                });
+                if (!isValid) {
+                    e.preventDefault(); // 
+                }
+            });
+        });
     </script>
 
 </body>

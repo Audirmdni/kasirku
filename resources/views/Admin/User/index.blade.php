@@ -1,4 +1,19 @@
 <x-admin>
+    <style>
+        .pagination .page-link {
+            color: #526D82;
+        }
+
+        .pagination .page-link:hover {
+            color: #ffffff;
+            background-color: #526D82;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #526D82;
+            border-color: #526D82;
+        }
+    </style>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <!-- Header content -->
@@ -14,7 +29,7 @@
                             <h3 class="card-title" style="font-weight: bold; font-size: 18px;">DAFTAR USER</h3>
                             <div class="card-tools">
 
-                                <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#tambahprodukModal">
+                                <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#tambahprodukModal">
                                     <i class="fa fa-plus"></i> <span class="font-weight-bold">Tambah</span>
                                 </button>
                             </div>
@@ -24,7 +39,7 @@
 
                             <!-- Tabel Data Produk -->
                             <div class="table-responsive">
-                                <table id="example2" class="table table-bordered table-striped">
+                                <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th class="text-center" style="width: 3%;">No.</th>
@@ -58,7 +73,7 @@
                                             </td>
                                             <td class="text-center">{{$user->nama}}</td>
                                             <td class="text-center">
-                                                <img src="{{ url("public/$user->poto") }}" style="width:30%; height:30%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                                <img src="{{ url('public') }}/{{ $user->foto }}" style="width:30%; height:30%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                                             </td>
                                         </tr>
                                         @endforeach
@@ -95,13 +110,10 @@
                             <label for="nama_produk">Username</label>
                             <input type="text" class="form-control" name="username" placeholder="Masukkan Username" required>
                         </div>
-
-
                         <div class="form-group">
                             <label for="stok">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Masukkan" required>
                         </div>
-
                         <div class="form-group">
                             <label for="stok">Poto</label>
                             <input type="file" class="form-control" name="foto" accept=".jpg, .jpeg, .png" required>
@@ -128,7 +140,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('admin/user', $user->id) }}" method="post">
+                    <form action="{{ url('admin/user', $user->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -139,21 +151,17 @@
                             <label for="nama_produk">Username</label>
                             <input type="text" class="form-control" name="username" value="{{$user->username}}">
                         </div>
-
-
                         <div class="form-group">
                             <label for="stok">Password</label>
                             <input type="password" class="form-control" name="password">
                         </div>
-
                         <div class="form-group">
                             <label>Poto</label>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img src="{{ url("public/$user->poto") }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                    <img src="{{ url('public') }}/{{ $user->foto }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                                 </div>
                                 <div class="col-md-6">
-
                                     <input type="file" class="form-control" name="foto" accept=".jpg, .jpeg, .png">
                                 </div>
                             </div>
@@ -186,7 +194,7 @@
                             <tr class="text-center">
                                 <center>
 
-                                    <img src="{{ url("public/$user->poto") }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
+                                    <img src="{{ url('public') }}/{{ $user->foto }}" style="width:50%;" onerror="this.src='https://bootdey.com/img/Content/avatar/avatar7.png';">
                                 </center>
                             </tr>
                             <tr>
@@ -207,11 +215,4 @@
     </div>
     @endforeach
 
-    @push('scripts')
-    <script>
-        function printBarcodes() {
-            alert('Mencetak barcodes...');
-        }
-    </script>
-    @endpush
 </x-admin>

@@ -1,4 +1,21 @@
 <x-admin>
+
+    <style>
+        .pagination .page-link {
+            color: #526D82;
+        }
+
+        .pagination .page-link:hover {
+            color: #ffffff;
+            background-color: #526D82;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #526D82;
+            border-color: #526D82;
+        }
+    </style>
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <!-- Header content -->
@@ -11,27 +28,26 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title" style="font-weight: bold; margin-bottom: 0; font-size: 18px;">DAFTAR KATEGORI</h3>
+                            <h3 class="card-title" style="font-weight: bold; font-size: 18px;">DAFTAR KATEGORI</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#tambahkategoriModal">
                                     <i class="fa fa-plus"></i> <span class="font-weight-bold">Tambah</span>
                                 </button>
                             </div>
                         </div>
+                        <!-- Tampilkan Data dan Pencarian -->
                         <div class="card-body">
-
                             <!-- Tabel Data Kategori -->
                             <div class="table-responsive">
-                                <table id="example2" class="table table-bordered table-striped">
-                                    <thead style="color: black; font-size: 14px;">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead class="bg-light" style="color: black; font-size: 14px;">
                                         <tr>
-                                            <th width="1Opx" style="text-align: center;">NO.</th>
-                                            <th width="1Opx" style="text-align: center;">AKSI</th>
+                                            <th width="10%" style="text-align: center;">NO.</th>
+                                            <th width="10%" style="text-align: center;">AKSI</th>
                                             <th>KATEGORI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Isi data kategori -->
                                         @foreach($kategori as $kat)
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
@@ -53,7 +69,6 @@
                                                 </div>
                                             </td>
                                             <td>{{ $kat->nama_kategori }}</td>
-
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -63,17 +78,17 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- /.container-fluid -->
     </section>
 
     <!-- Tambah Kategori Modal -->
     <div class="modal fade" id="tambahkategoriModal" tabindex="-1" role="dialog" aria-labelledby="tambahkategoriModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header" style="padding: 10px;">
+                <div class="modal-header">
                     <h5 class="modal-title w-100 text-center" id="tambahkategoriModalLabel" style="font-size: 17px; font-weight: bold;">Tambah Kategori</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
-                        <span aria-hidden="true" style="color: white;">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -84,8 +99,8 @@
                             <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Nama Kategori" required>
                         </div>
                         <div class="text-right">
-                            <button type="button" class="btn btn-sm btn-danger btn-xs" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-sm btn-success btn-xs">Simpan</button>
+                            <button type="button" class="btn btn-md btn-danger" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-md btn-success">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -110,7 +125,7 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="edit_nama_kategori{{$kat->id_kategori}}">Nama Kategori</label>
-                            <input type="text" class="form-control" id="edit_nama_kategori{{$kat->id_kategori}}" name="nama_kategori" value="{{ $kat->nama_kategori }}">
+                            <input type="text" class="form-control" id="edit_nama_kategori{{$kat->id_kategori}}" name="nama_kategori" value="{{ $kat->nama_kategori }}" required>
                         </div>
                         <div class="text-right">
                             <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
@@ -126,9 +141,9 @@
     <!-- Lihat Kategori Modal -->
     @foreach($kategori as $kat)
     <div class="modal fade" id="lihatkategoriModal{{$kat->id_kategori}}" tabindex="-1" role="dialog" aria-labelledby="lihatkategoriModalLabel{{$kat->id_kategori}}" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="padding: 15px;">
+                <div class="modal-header">
                     <h5 class="modal-title w-100 text-center" id="lihatkategoriModalLabel{{$kat->id_kategori}}" style="font-weight: bold;">Detail Kategori</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
                         <span aria-hidden="true">&times;</span>
@@ -138,11 +153,11 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>Kode kategori</th>
+                                <th>Kode Kategori</th>
                                 <td><span class="badge badge-success">{{ $kat->id_kategori }}</span></td>
                             </tr>
                             <tr>
-                                <th>Nama kategori</th>
+                                <th>Nama Kategori</th>
                                 <td>{{ $kat->nama_kategori }}</td>
                             </tr>
                         </tbody>

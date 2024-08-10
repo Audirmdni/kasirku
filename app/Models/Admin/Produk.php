@@ -2,15 +2,10 @@
 
 namespace App\Models\Admin;
 
-
-
-
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Milon\Barcode\DNS1D;
 use App\Models\DetailPenjualan;
-
-
 
 class Produk extends Model
 {

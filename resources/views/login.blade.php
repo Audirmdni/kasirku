@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="zxx">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>KASIRKU | Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
+    <title>LOGIN | KASIRKU</title>
+    <!-- Meta-Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{url('public')}}/admin-asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{url('public')}}/admin-asset/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Login Form, Responsive Web Template, Bootstrap Web Templates, Flat Web Templates">
+    <!-- Stylesheets -->
+    <link href="{{url('public')}}/admin-asset/css_login/style.css" rel='stylesheet' type='text/css' />
+    <!-- Google Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
 <body class="hold-transition login-page">
@@ -67,18 +60,19 @@
 
 
             </div>
-            <!-- /.login-card-body -->
-        </div>
+            <div class="agile-field-txt">
+                <input type="password" name="password" placeholder="Password" required id="myInput" />
+                <div class="agile_label">
+                    <input id="check3" name="check3" type="checkbox" value="show password">
+                    <label class="check" for="check3">Remember me</label>
+                </div>
+            </div>
+            <div class="w3ls-bot">
+                <input type="submit" value="LOGIN">
+            </div>
+        </form>
+        <!-- Form ends here -->
     </div>
-    <!-- /.login-box -->
-
-    <!-- jQuery -->
-    <script src="{{url('public')}}/admin-asset/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{url('public')}}/admin-asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="{{url('public')}}/admin-asset/dist/js/adminlte.min.js"></script>
-
 </body>
 
 </html>

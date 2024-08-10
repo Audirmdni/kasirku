@@ -1,4 +1,21 @@
 <x-admin>
+
+    <style>
+        .pagination .page-link {
+            color: #526D82;
+        }
+
+        .pagination .page-link:hover {
+            color: #ffffff;
+            background-color: #526D82;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #526D82;
+            border-color: #526D82;
+        }
+    </style>
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <!-- Header content -->
@@ -13,7 +30,7 @@
                         <div class="card-header">
                             <h3 class="card-title" style="font-weight: bold; margin-bottom: 0; font-size: 18px;">PENGELUARAN</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#tambahPengeluaranModal">
+                                <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#tambahPengeluaranModal">
                                     <i class="fa fa-plus"></i> <span class="font-weight-bold">Tambah</span>
                                 </button>
                             </div>
@@ -23,7 +40,7 @@
 
                                 <!-- Tabel Data Pengeluaran -->
                                 <div class="table-responsive">
-                                    <table id="example2" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th width="10px" style="text-align: center;">NO.</th>
@@ -53,7 +70,7 @@
                                                 </td>
                                                 <td>{{ $p->deskripsi }}</td>
                                                 <td>Rp {{ number_format($p->nominal, 0, ',', '.') }}</td>
-                                                <td>{{ $p->created_at}}</td>
+                                                <td>{{ $p->tanggal}}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>

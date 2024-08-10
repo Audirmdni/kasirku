@@ -1,4 +1,19 @@
 <x-admin>
+    <style>
+        .pagination .page-link {
+            color: #526D82;
+        }
+
+        .pagination .page-link:hover {
+            color: #ffffff;
+            background-color: #526D82;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #526D82;
+            border-color: #526D82;
+        }
+    </style>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <!-- Header content -->
@@ -12,7 +27,7 @@
                         <div class="card-header">
                             <h3 class="card-title" style="font-weight: bold; margin-bottom: 0; font-size: 18px;">DAFTAR SUPPLIER</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-md btn-primary" data-toggle="modal" data-target="#tambahsupplierModal">
+                                <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#tambahsupplierModal">
                                     <i class="fa fa-plus"></i> <span class="font-weight-bold">Tambah</span>
                                 </button>
                             </div>
@@ -23,7 +38,7 @@
 
                                 <!-- Tabel Data Supplier -->
                                 <div class="table-responsive">
-                                    <table id="example2" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th width="10px" style="text-align: center;">NO.</th>
