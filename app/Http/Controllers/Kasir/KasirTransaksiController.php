@@ -4,16 +4,16 @@ namespace App\Http\Controllers\kasir;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Sale;
 use App\Models\Admin\Produk;
 use Illuminate\Http\Request;
 use App\Models\DetailPenjualan;
+use App\Models\Penjualan;
 
 class KasirTransaksiController extends Controller
 {
     public function index()
     {
-        $penjualan = Sale::all();
+        $penjualan = Penjualan::all();
         return view('kasir.transaksi.index', compact('penjualan'));
     }
 
@@ -21,7 +21,7 @@ class KasirTransaksiController extends Controller
     {
         $data['produk'] = Produk::all();
       
-        // return $data;
+        // return $data;   
         
         return view('kasir.transaksi.create', $data);
     }
@@ -30,14 +30,15 @@ class KasirTransaksiController extends Controller
     
     public function store(Request $request)
     {
+        //  Validate the request
         $request->validate([
-            'invoice_number' => 'required|unique:sales,invoice_number',
+            'no_nota' => 'required|unique:penjualan,no_nota',
             'produk' => 'required|array',
-            'produk.*.id' => 'required|exists:produk,id_produk',
+             'produk.*.id' => 'required|exists:produk,id_produk',
             'produk.*.quantity' => 'required|integer|min:1',
         ], [
-            'invoice_number.required' => 'Nomor Nota wajib diisi.',
-            'invoice_number.unique' => 'Nomor Nota sudah ada.',
+            'no_nota.required' => 'Nomor Nota wajib diisi.',
+            'no_nota.unique' => 'Nomor Nota sudah ada.',
             'produk.required' => 'Produk wajib diisi.',
             'produk.array' => 'Format produk tidak valid.',
             'produk.*.id.required' => 'Produk wajib dipilih.',
@@ -46,76 +47,89 @@ class KasirTransaksiController extends Controller
             'produk.*.quantity.integer' => 'Jumlah produk harus berupa angka.',
             'produk.*.quantity.min' => 'Jumlah produk minimal 1.',
         ]);
-
     
-        $totalAmount = 0;
-        $saleDetails = [];
+        $totalHarga = 0;
+        $penjualanDetail = [];
     
-        foreach ($request->produk as $dataProduct) {
-            $product = Produk::find($dataProduct['id']);
-            if ($product == null) {
-                return redirect()->back()->withErrors(['Produk dengan ID ' . $dataProduct['id'] . ' tidak ditemukan.']);
-            }
+        foreach ($request->produk as $dataProduk) {
+            $product = Produk::find($dataProduk['id']);
+            $total_item = $dataProduk['quantity'];
+            $harga = $product->harga_jual - ($product->harga_jual * ($product->diskon / 100));
+            $totalHarga += $harga * $total_item;
     
-            $quantity = $dataProduct['quantity'];
-            $price = $product->harga_jual - ($product->harga_jual * ($product->diskon / 100));
-            $totalAmount += $price * $quantity;
-    
-            $saleDetails[] = new DetailPenjualan([
+            $penjualanDetail[] = new DetailPenjualan([
                 'id_produk' => $product->id_produk,
-                'quantity' => $quantity,
-                'price' => $price,
+                'total_item' => $total_item,
+                'harga' => $harga,
             ]);
     
-            $product->decrement('stok', $quantity);
+            $product->decrement('stok', $total_item);
         }
     
-        $sale = Sale::create([
-            'invoice_number' => $request->invoice_number,
-            'total_amount' => $totalAmount,
-            'sale_date' => now(),
+        $penjualan = Penjualan::create([
+            'no_nota' => $request->no_nota,
+            'total_harga' => $totalHarga,
+            'tanggal_penjualan' => now(),
+            'uang_bayar' => $request->uang_bayar,
+            'kembalian' => $request->kembalian,
         ]);
     
-        foreach ($saleDetails as $detail) {
-            $detail->id_penjualan = $sale->id;
+        foreach ($penjualanDetail as $detail) {
+            $detail->id_penjualan = $penjualan->id_penjualan;
             $detail->save();
         }
     
         return redirect('kasir/transaksi')->with('success', 'Penjualan berhasil ditambahkan.');
     }
-
+    
 
 
     public function show($id)
     {
-        $penjualan = Sale::with('details')->findOrFail($id);
+        $penjualan = Penjualan::with('detailPenjualan')->findOrFail($id);
 
-        // Mengembalikan view dengan data penjualan
-      
-
-            // return $penjualan;
+         
         return view('kasir.transaksi.detail', compact('penjualan'));
     }
 
     
     public function getData($id)
     {
-        $penjualan = Sale::with('details.produk')->findOrFail($id);
+        $penjualan = Penjualan::with('detailPenjualan.produk')->findOrFail($id);
         return response()->json($penjualan);
     }
 
   
   
-   public function destroy($id)
-    {
+    public function destroy($id_penjualan)
+{
+    // Find the Penjualan record by ID with related DetailPenjualan records
+    $penjualan = Penjualan::with('detailPenjualan')->findOrFail($id_penjualan);
 
+    // Loop through each DetailPenjualan record to restore the stock of the product
+    foreach ($penjualan->detailPenjualan as $detail) {
+        // Restore the stock of the product
+        $product = Produk::find($detail->id_produk);
+
+        if ($product) {
+            // Ensure total_item is numeric
+            if (is_numeric($detail->total_item)) {
+                $product->increment('stok', $detail->total_item);
+            } else {
+                    // Log::error('Non-numeric value for total_item: ' . $detail->total_item);
+            }
+        }
+    }
+
+    // Delete the associated DetailPenjualan records
+    $penjualan->detailPenjualan()->delete();
+
+    // Delete the Penjualan record
+    $penjualan->delete();
+
+    // Redirect back with a success message
+    return redirect('kasir/transaksi')->with('danger', 'Data Berhasil Di hapus');;
+}
 
     
-        $penjualan = Sale::findOrFail($id);
-
-
-        $penjualan->delete();
-
-        return response()->json(['success' => 'Penjualan berhasil dihapus.']);
-    }
 }

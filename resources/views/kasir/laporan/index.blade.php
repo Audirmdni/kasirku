@@ -33,12 +33,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($sales as $sale)
+                    @forelse ($penjualan as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $sale->invoice_number }}</td>
-                            <td>Rp {{ number_format($sale->total_amount, 0, ',', '.') }}</td>
-                            <td>{{ $sale->sale_date }}</td>
+                            <td>{{ $item->no_nota }}</td>
+                            <td>Rp {{ number_format($item->total_harga, 0, ',', '.') }}</td>
+                            <td>{{ $item->tanggal_penjualan }}</td>
                         </tr>
                     @empty
                         <tr>

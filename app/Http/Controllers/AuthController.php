@@ -18,13 +18,15 @@ class AuthController extends Controller
     {
         if (auth()->guard('admin')->attempt(['username' => request('username'), 'password' => request('password')])) {
             return redirect('admin')->with('success', 'Login Berhasil');
-        }
+        }else if (auth()->guard('kasir')->attempt(['username' => request('username'), 'password' => request('password')])) {
+            return redirect('kasir')->with('success', 'Berhasil Login');
+        }else{
+            return back()->withErrors([
+                'login gagal, silahkan coba lagi',
+        ]);
 
-        if (auth()->guard('kasir')->attempt(['username' => request('username'), 'password' => request('password')])) {
-            return redirect('kasir')->with('success', 'Login Berhasil');
         }
-
-        return redirect('login');
+      
     }
 
     public function logout(Request $request)

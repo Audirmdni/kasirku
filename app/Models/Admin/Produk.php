@@ -38,11 +38,7 @@ class Produk extends Model
         return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
     }
 
-    public function penjualan()
-    {
-        return $this->hasMany(Penjualan::class, 'id_produk', 'id_produk');
-    }
-
+  
     function detailPenjualan(){
         return $this->hasMany(DetailPenjualan::class, 'id_produk', 'id_produk');
     }

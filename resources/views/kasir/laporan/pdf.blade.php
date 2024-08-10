@@ -19,7 +19,7 @@
 </head>
 <body>
     <h1>Laporan Penjualan</h1>
-    <p><strong>Periode:</strong> {{ $startDate }} sampai {{ $endDate }}</p>
+    <p><strong>Periode:</strong> {{ $startDate }} - {{ $endDate }}</p>
 
     <table>
         <thead>
@@ -31,12 +31,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($sales as $sale)
+            @foreach ($penjualan as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $sale->invoice_number }}</td>
-                    <td>Rp {{ number_format($sale->total_amount, 0, ',', '.') }}</td>
-                    <td>{{ $sale->sale_date }}</td>
+                    <td>{{ $item->no_nota }}</td>
+                    <td>Rp {{ number_format($item->total_harga, 0, ',', '.') }}</td>
+                    <td>{{ $item->tanggal_penjualan }}</td>
                 </tr>
             @endforeach
         </tbody>

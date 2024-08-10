@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Kasir;
 
 use App\Http\Controllers\Controller;
+use App\Models\Penjualan;
 use Illuminate\Http\Request;
 
-use App\Models\Sale; 
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
@@ -15,9 +15,9 @@ class ReportController extends Controller
         $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
         $endDate = $request->input('end_date', now()->endOfMonth()->toDateString());
 
-        $sales = Sale::whereBetween('sale_date', [$startDate, $endDate])->get();
+        $penjualan = Penjualan::whereBetween('tanggal_penjualan', [$startDate, $endDate])->get();
 
-        return view('kasir.laporan.index', compact('sales', 'startDate', 'endDate'));
+        return view('kasir.laporan.index', compact('penjualan', 'startDate', 'endDate'));
     }
 
     public function exportPdf(Request $request)
@@ -25,9 +25,9 @@ class ReportController extends Controller
         $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
         $endDate = $request->input('end_date', now()->endOfMonth()->toDateString());
 
-        $sales = Sale::whereBetween('sale_date', [$startDate, $endDate])->get();
+        $penjualan = Penjualan::whereBetween('tanggal_penjualan', [$startDate, $endDate])->get();
 
-        $pdf = PDF::loadView('kasir.laporan.pdf', compact('sales', 'startDate', 'endDate'));
+        $pdf = PDF::loadView('kasir.laporan.pdf', compact('penjualan', 'startDate', 'endDate'));
         return $pdf->download('sales_report.pdf');
     }
 }

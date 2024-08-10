@@ -26,6 +26,14 @@
             <a href="{{url('public')}}/admin-asset/index2.html"><b>KASIR</b>KU</a>
         </div>
         <!-- /.login-logo -->
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+        </div>
+    @endif
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Silahkan Login</p>

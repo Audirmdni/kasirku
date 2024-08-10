@@ -1,5 +1,6 @@
 <x-kasir>
-    <div class="container-fluid">
+  <x-ui.notif-alert />
+    <div class="container-fluid ">
         <!-- Small boxes (Stat box) -->
        
         <div class="row">
